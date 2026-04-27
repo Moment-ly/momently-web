@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOMENTly | Najdi svého fotografa</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --teracotta: #A6735B;
+            --bg-color: #F4EFEA;
+            --text-dark: #2C2C2C;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGACE --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 5%;
+            position: absolute;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo img {
+            height: 100px; 
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a.active {
+            color: var(--teracotta);
+            border-bottom: 2px solid var(--teracotta);
+        }
+
+        .nav-links a:hover {
+            color: var(--teracotta);
+        }
+
+        /* --- MOBILNÍ MENU --- */
+        .menu-icon {
+            display: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 767px) {
+            .menu-icon { display: block; }
+            nav { padding: 30px 5%; }
+            .logo img { height: 70px; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.4s ease-in-out;
+                z-index: 1000;
+            }
+
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.5rem; }
+        }
+
+        /* --- HERO SEKCE --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 180px 5% 60px 5%;
+            box-sizing: border-box;
+        }
+
+        .brush-bg {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 100%;
+            background-image: url('stetec.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.8; 
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .text-block {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 8vw, 4.8rem);
+            line-height: 1.05;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 35px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mobile-mockup {
+            width: 100%;
+            max-width: 320px;
+            filter: drop-shadow(0 30px 60px rgba(166, 115, 91, 0.25));
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--teracotta);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            transition: transform 0.2s ease;
+            width: 145px;
+            box-sizing: border-box;
+        }
+
+        .store-btn:hover { transform: translateY(-2px); }
+        .store-btn i { font-size: 1.4rem; }
+        .store-btn-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; }
+        .store-btn-text .top-text { font-size: 0.55rem; font-weight: 400; text-transform: uppercase; }
+        .store-btn-text .main-text { font-size: 0.9rem; font-weight: 600; }
+
+        @media (min-width: 768px) {
+            .content { flex-direction: row-reverse; text-align: left; justify-content: space-between; }
+            .text-block { text-align: left; flex: 1; }
+            .store-buttons { justify-content: flex-start; }
+            .mobile-mockup { max-width: 400px; margin-left: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="moment-logo.png" alt="MOMENTly logo">
+        </a>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active">Jak to funguje</a></li>
+            <li><a href="fotografove.html">Pro fotografy</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+
+        <div class="menu-icon" id="menuIcon">☰</div>
+    </nav>
+
+    <div class="hero">
+        <div class="brush-bg"></div>
+        <div class="content">
+            <img src="mobil.png" alt="MOMENTly App Mockup" class="mobile-mockup">
+            <div class="text-block">
+                <h1>Najdi svého fotografa. Podle vizuálního stylu.</h1>
+                <p class="subtitle">Nahrajte fotku, která se vám líbí, a naše AI vám najde autora se stejným rukopisem.</p>
+                
+                <div class="store-buttons">
+                    <a href="#" class="store-btn">
+                        <i class="fab fa-apple"></i>
+                        <div class="store-btn-text">
+                            <span class="top-text">Stahuj na</span>
+                            <span class="main-text">App Store</span>
+                        </div>
+                    </a>
+                    <a href="#" class="store-btn">
+                        <i class="fab fa-google-play"></i>
+                        <div class="store-btn-text">
+                            <span class="top-text">Stahuj na</span>
+                            <span class="main-text">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuIcon = document.getElementById('menuIcon');
+        const navLinks = document.getElementById('navLinks');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuIcon.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.innerHTML = '☰';
+            });
+        });
+    </script>
+</body>
+</html>

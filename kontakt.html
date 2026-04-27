@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | MOMENTly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; width: 100%; box-sizing: border-box; z-index: 1000; }
+        .logo img { height: 100px; width: auto; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+        .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            padding: 0 5%;
+        }
+        h1 { font-size: clamp(3rem, 8vw, 4.5rem); margin-bottom: 20px; }
+        .contact-info { font-family: 'Inter', sans-serif; font-size: 1.2rem; line-height: 2; margin-top: 40px; }
+        .contact-info a { color: var(--teracotta); text-decoration: none; font-weight: 600; }
+        
+        @media (max-width: 767px) {
+            .nav-links { display: none; }
+            nav { padding: 30px 5%; }
+            .logo img { height: 70px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Jak to funguje</a></li>
+            <li><a href="fotografove.html">Pro fotografy</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+    </nav>
+    <div class="contact-container">
+        <h1>Napište nám.</h1>
+        <div class="contact-info">
+            <p>Máte dotazy k aplikaci nebo návrhy na spolupráci?</p>
+            <a href="mailto:momently@email.cz">momently@email.cz</a>
+            <p style="margin-top: 20px; opacity: 0.7;">Sledujte nás brzy i na sociálních sítích.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | MOMENTly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
+        body { margin: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; box-sizing: border-box; }
+        .logo img { height: 100px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; font-family: 'Inter', sans-serif; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+        .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
+
+        .blog-header { text-align: center; padding: 60px 5%; }
+        .blog-header h1 { font-size: 4rem; }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 5%;
+        }
+        .blog-card { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .blog-card h2 { font-size: 1.8rem; margin-top: 15px; }
+        .blog-card p { font-family: 'Inter', sans-serif; opacity: 0.8; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Jak to funguje</a></li>
+            <li><a href="fotografove.html">Pro fotografy</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+    <header class="blog-header">
+        <h1>Inspirace a styl.</h1>
+    </header>
+    <div class="blog-grid">
+        <div class="blog-card">
+            <div style="background: #e0d8d0; height: 200px; border-radius: 10px;"></div>
+            <h2>Jak AI pozná váš styl?</h2>
+            <p>Ponořte se do technologie, která stojí za MOMENTly.</p>
+        </div>
+        <div class="blog-card">
+            <div style="background: #e0d8d0; height: 200px; border-radius: 10px;"></div>
+            <h2>Světlo jako podpis.</h2>
+            <p>Proč je práce se stíny nejdůležitějším prvkem vizuálního rukopisu.</p>
+        </div>
+    </div>
+</body>
+</html>
