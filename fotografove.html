@@ -3,95 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Pro fotografy | Získejte zakázky podle vašeho stylu | MOMENTly</title>
-    <meta name="description" content="Jste fotograf? MOMENTly vás propojí s klienty, kteří hledají přesně váš styl. Nahrajte své portfolio a nechte naši AI vyhledat ideální zákazníky.">
-
-    <meta property="og:title" content="MOMENTly pro fotografy">
-    <meta property="og:description" content="Získejte zakázky, které ladí s vaším stylem. Nahrajte portfolio a nechte AI pracovat.">
-    <meta property="og:image" content="https://momently.cz/moment-logo.png">
-    <meta property="og:url" content="https://momently.cz/fotografove.html">
-    <meta property="og:type" content="website">
-
+    <title>Pro fotografy | MOMENTly</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
+        /* CSS JE NAPROSTO TOTOŽNÉ S INDEX.HTML */
         :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
         body { margin: 0; padding: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); overflow-x: hidden; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; position: absolute; width: 100%; box-sizing: border-box; z-index: 1000; }
         .logo img { height: 100px; width: auto; }
         .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; border-bottom: 2px solid transparent; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; }
         .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
-        .menu-icon { display: none; font-size: 2.5rem; cursor: pointer; z-index: 1001; }
 
-        @media (max-width: 767px) {
-            .menu-icon { display: block; }
-            nav { padding: 30px 5%; }
-            .logo img { height: 70px; }
-            .nav-links { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background-color: var(--bg-color); flex-direction: column; align-items: center; justify-content: center; gap: 40px; transition: right 0.4s ease-in-out; z-index: 1000; }
-            .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.5rem; }
-        }
-
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 180px 5% 60px 5%; box-sizing: border-box; }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 5%; box-sizing: border-box; text-align: center; }
         .brush-bg { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 110%; height: 100%; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.8; z-index: 1; pointer-events: none; }
-        .content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 40px; max-width: 1200px; width: 100%; }
-        .text-block { text-align: center; max-width: 600px; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); line-height: 1.1; margin: 0 0 20px 0; font-weight: 600; letter-spacing: -1px; }
-        .subtitle { font-size: clamp(1.1rem, 2.5vw, 1.3rem); line-height: 1.6; color: #444; margin-bottom: 35px; font-family: 'Inter', sans-serif; }
-        .mobile-mockup { width: 100%; max-width: 320px; filter: drop-shadow(0 30px 60px rgba(166, 115, 91, 0.25)); }
-        .store-buttons { display: flex; gap: 12px; justify-content: center; }
-        .store-btn { display: flex; align-items: center; gap: 10px; background-color: var(--teracotta); color: white; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-family: 'Inter', sans-serif; transition: transform 0.2s ease; width: 145px; box-sizing: border-box; }
-        .store-btn:hover { transform: translateY(-2px); }
-        .store-btn i { font-size: 1.4rem; }
-        .store-btn-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; }
-        .store-btn-text .top-text { font-size: 0.55rem; font-weight: 400; text-transform: uppercase; }
-        .store-btn-text .main-text { font-size: 0.9rem; font-weight: 600; }
-
-        @media (min-width: 768px) {
-            .content { flex-direction: row-reverse; text-align: left; justify-content: space-between; }
-            .text-block { text-align: left; flex: 1; }
-            .store-buttons { justify-content: flex-start; }
-            .mobile-mockup { max-width: 400px; margin-left: 50px; }
-        }
+        
+        .content { position: relative; z-index: 10; width: 100%; max-width: 1200px; }
+        h1 { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 1; margin: 0 0 15px 0; font-weight: 600; letter-spacing: -2px; }
+        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.5; color: #444; font-family: 'Inter', sans-serif; max-width: 750px; margin: 0 auto; }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
-        <ul class="nav-links" id="navLinks">
+        <ul class="nav-links">
             <li><a href="index.html">Jak to funguje</a></li>
             <li><a href="fotografove.html" class="active">Pro fotografy</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <div class="menu-icon" id="menuIcon">☰</div>
     </nav>
-
     <div class="hero">
         <div class="brush-bg"></div>
         <div class="content">
-            <img src="mobil.png" alt="MOMENTly pro fotografy" class="mobile-mockup">
-            <div class="text-block">
-                <h1>Získejte zakázky, které ladí s vaším stylem.</h1>
-                <p class="subtitle">Stáhněte si aplikaci, nahrajte své portfolio a nechte naši AI, aby vás propojila s klienty, kteří hledají přesně váš vizuální rukopis.</p>
-                <div class="store-buttons">
-                    <a href="#" class="store-btn"><i class="fab fa-apple"></i><div class="store-btn-text"><span class="top-text">Stahuj na</span><span class="main-text">App Store</span></div></a>
-                    <a href="#" class="store-btn"><i class="fab fa-google-play"></i><div class="store-btn-text"><span class="top-text">Stahuj na</span><span class="main-text">Google Play</span></div></a>
-                </div>
-            </div>
+            <h1>Ukaž svůj styl.</h1>
+            <p class="subtitle">Získejte zakázky, které ladí s vaším vizuálním rukopisem. Nechte AI, ať vám najde ty správné klienty.</p>
         </div>
     </div>
-
-    <script>
-        const menuIcon = document.getElementById('menuIcon');
-        const navLinks = document.getElementById('navLinks');
-        menuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuIcon.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-    </script>
 </body>
 </html>
