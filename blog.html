@@ -4,18 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | MOMENTly</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
-        body { margin: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; box-sizing: border-box; }
-        .logo img { height: 100px; }
-        .nav-links { display: flex; gap: 30px; list-style: none; font-family: 'Inter', sans-serif; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
-        .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
+        :root {
+            --teracotta: #A6735B;
+            --bg-color: #F4EFEA;
+            --text-dark: #2C2C2C;
+        }
 
-        .blog-header { text-align: center; padding: 60px 5%; }
-        .blog-header h1 { font-size: 4rem; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGACE --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 5%;
+            position: relative; /* Zde relative, aby netrpěl obsah pod ním */
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo img {
+            height: 100px; 
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a.active {
+            color: var(--teracotta);
+            border-bottom: 2px solid var(--teracotta);
+        }
+
+        /* --- MOBILNÍ MENU --- */
+        .menu-icon {
+            display: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 767px) {
+            .menu-icon { display: block; }
+            nav { padding: 30px 5%; }
+            .logo img { height: 70px; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.4s ease-in-out;
+                z-index: 1000;
+            }
+
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.5rem; }
+        }
+
+        /* --- BLOG OBSAH --- */
+        .blog-header {
+            text-align: center;
+            padding: 60px 5% 40px 5%;
+        }
+
+        .blog-header h1 {
+            font-size: clamp(3rem, 8vw, 4rem);
+            margin: 0;
+        }
 
         .blog-grid {
             display: grid;
@@ -25,35 +125,89 @@
             margin: 0 auto 100px;
             padding: 0 5%;
         }
-        .blog-card { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .blog-card h2 { font-size: 1.8rem; margin-top: 15px; }
-        .blog-card p { font-family: 'Inter', sans-serif; opacity: 0.8; font-size: 0.9rem; }
+
+        .blog-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card .img-placeholder {
+            background: #e0d8d0;
+            height: 200px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .blog-card h2 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+        }
+
+        .blog-card p {
+            font-family: 'Inter', sans-serif;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
-        <ul class="nav-links">
+        <a href="index.html" class="logo">
+            <img src="moment-logo.png" alt="MOMENTly logo">
+        </a>
+        
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Jak to funguje</a></li>
             <li><a href="fotografove.html">Pro fotografy</a></li>
             <li><a href="blog.html" class="active">Blog</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
+
+        <div class="menu-icon" id="menuIcon">☰</div>
     </nav>
+
     <header class="blog-header">
         <h1>Inspirace a styl.</h1>
     </header>
+
     <div class="blog-grid">
         <div class="blog-card">
-            <div style="background: #e0d8d0; height: 200px; border-radius: 10px;"></div>
+            <div class="img-placeholder"></div>
             <h2>Jak AI pozná váš styl?</h2>
-            <p>Ponořte se do technologie, která stojí za MOMENTly.</p>
+            <p>Ponořte se do technologie, která stojí za algoritmem MOMENTly.</p>
         </div>
         <div class="blog-card">
-            <div style="background: #e0d8d0; height: 200px; border-radius: 10px;"></div>
+            <div class="img-placeholder"></div>
             <h2>Světlo jako podpis.</h2>
             <p>Proč je práce se stíny nejdůležitějším prvkem vizuálního rukopisu.</p>
         </div>
     </div>
+
+    <script>
+        const menuIcon = document.getElementById('menuIcon');
+        const navLinks = document.getElementById('navLinks');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuIcon.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.innerHTML = '☰';
+            });
+        });
+    </script>
+
 </body>
 </html>

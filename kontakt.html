@@ -4,52 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt | MOMENTly</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
-        body { margin: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); }
-        
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; width: 100%; box-sizing: border-box; z-index: 1000; }
-        .logo img { height: 100px; width: auto; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
-        .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
+        :root {
+            --teracotta: #A6735B;
+            --bg-color: #F4EFEA;
+            --text-dark: #2C2C2C;
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGACE --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 5%;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo img {
+            height: 100px; 
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a.active {
+            color: var(--teracotta);
+            border-bottom: 2px solid var(--teracotta);
+        }
+
+        /* --- MOBILNÍ MENU --- */
+        .menu-icon {
+            display: none;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 767px) {
+            .menu-icon { display: block; }
+            nav { padding: 30px 5%; }
+            .logo img { height: 70px; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.4s ease-in-out;
+                z-index: 1000;
+            }
+
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.5rem; }
+        }
+
+        /* --- KONTAKT OBSAH --- */
         .contact-container {
             max-width: 800px;
             margin: 100px auto;
             text-align: center;
             padding: 0 5%;
         }
-        h1 { font-size: clamp(3rem, 8vw, 4.5rem); margin-bottom: 20px; }
-        .contact-info { font-family: 'Inter', sans-serif; font-size: 1.2rem; line-height: 2; margin-top: 40px; }
-        .contact-info a { color: var(--teracotta); text-decoration: none; font-weight: 600; }
-        
-        @media (max-width: 767px) {
-            .nav-links { display: none; }
-            nav { padding: 30px 5%; }
-            .logo img { height: 70px; }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 4.5rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .contact-info {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-top: 40px;
+        }
+
+        .contact-info a {
+            color: var(--teracotta);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
-        <ul class="nav-links">
+        <a href="index.html" class="logo">
+            <img src="moment-logo.png" alt="MOMENTly logo">
+        </a>
+        
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Jak to funguje</a></li>
             <li><a href="fotografove.html">Pro fotografy</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="kontakt.html" class="active">Kontakt</a></li>
         </ul>
+
+        <div class="menu-icon" id="menuIcon">☰</div>
     </nav>
+
     <div class="contact-container">
         <h1>Napište nám.</h1>
         <div class="contact-info">
-            <p>Máte dotazy k aplikaci nebo návrhy na spolupráci?</p>
-            <a href="mailto:momently@email.cz">momently@email.cz</a>
-            <p style="margin-top: 20px; opacity: 0.7;">Sledujte nás brzy i na sociálních sítích.</p>
+            <p>Máte dotazy k aplikaci nebo návrhy na spolupráci? <br> Budeme rádi za každou zprávu.</p>
+            <a href="mailto:hello@momently.cz">hello@momently.cz</a>
+            <p style="margin-top: 40px; opacity: 0.6; font-size: 0.9rem;">MOMENTly s.r.o. <br> Praha, Česká republika</p>
         </div>
     </div>
+
+    <script>
+        const menuIcon = document.getElementById('menuIcon');
+        const navLinks = document.getElementById('navLinks');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuIcon.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.innerHTML = '☰';
+            });
+        });
+    </script>
+
 </body>
 </html>
