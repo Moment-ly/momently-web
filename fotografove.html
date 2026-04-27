@@ -16,7 +16,22 @@
         .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
 
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 5% 60px 5%; box-sizing: border-box; }
-        .brush-bg { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 110%; height: 100%; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.8; z-index: 1; pointer-events: none; }
+        
+        .brush-bg { 
+            position: absolute; 
+            top: 55%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 110%; 
+            height: 100%; 
+            background-image: url('stetec.png'); 
+            background-repeat: no-repeat; 
+            background-position: center; 
+            background-size: contain; 
+            opacity: 0.8; 
+            z-index: 1; 
+            pointer-events: none; 
+        }
         
         .content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 40px; max-width: 1200px; width: 100%; }
         .text-block { text-align: center; max-width: 650px; }
@@ -25,7 +40,9 @@
         .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.5; color: #444; margin-bottom: 35px; font-family: 'Inter', sans-serif; }
 
         .store-buttons { display: flex; gap: 15px; justify-content: center; }
-        .store-buttons img { height: 45px; width: auto; }
+        .store-buttons a { text-decoration: none; }
+        .store-buttons img { height: 44px; width: auto; display: block; transition: transform 0.2s; }
+        .store-buttons img:hover { transform: scale(1.05); }
 
         .mobile-mockup { width: 100%; max-width: 350px; filter: drop-shadow(0 30px 60px rgba(166, 115, 91, 0.25)); }
 
@@ -47,6 +64,7 @@
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
     </nav>
+
     <div class="hero">
         <div class="brush-bg"></div>
         <div class="content">
@@ -55,8 +73,8 @@
                 <h1>Ukaž svůj styl.</h1>
                 <p class="subtitle">Získejte zakázky, které ladí s vaším vizuálním rukopisem. Nechte AI, ať vám najde ty správné klienty.</p>
                 <div class="store-buttons">
-                    <a href="#"><img src="appstore.png" alt="App Store"></a>
-                    <a href="#"><img src="googleplay.png" alt="Google Play"></a>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play"></a>
                 </div>
             </div>
         </div>
