@@ -8,18 +8,35 @@
     <style>
         :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
         body { margin: 0; padding: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); overflow-x: hidden; }
+        
         nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; position: absolute; width: 100%; box-sizing: border-box; z-index: 1000; }
         .logo img { height: 100px; width: auto; }
         .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; }
         .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
 
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 5%; box-sizing: border-box; text-align: center; }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 5% 60px 5%; box-sizing: border-box; }
         .brush-bg { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 110%; height: 100%; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.8; z-index: 1; pointer-events: none; }
         
-        .content { position: relative; z-index: 10; width: 100%; max-width: 1200px; }
-        h1 { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 1; margin: 0 0 15px 0; font-weight: 600; letter-spacing: -2px; }
-        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.5; color: #444; font-family: 'Inter', sans-serif; max-width: 750px; margin: 0 auto; }
+        .content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 40px; max-width: 1200px; width: 100%; }
+        .text-block { text-align: center; max-width: 650px; }
+        
+        h1 { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 1; margin: 0 0 20px 0; font-weight: 600; letter-spacing: -2px; }
+        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.5; color: #444; margin-bottom: 35px; font-family: 'Inter', sans-serif; }
+
+        /* Tlačítka Store */
+        .store-buttons { display: flex; gap: 15px; justify-content: center; }
+        .store-buttons img { height: 45px; width: auto; }
+
+        /* Mobilní mockup */
+        .mobile-mockup { width: 100%; max-width: 350px; filter: drop-shadow(0 30px 60px rgba(166, 115, 91, 0.25)); }
+
+        @media (min-width: 768px) {
+            .content { flex-direction: row-reverse; text-align: left; justify-content: space-between; }
+            .text-block { text-align: left; flex: 1; }
+            .store-buttons { justify-content: flex-start; }
+            .mobile-mockup { max-width: 450px; }
+        }
     </style>
 </head>
 <body>
@@ -35,8 +52,15 @@
     <div class="hero">
         <div class="brush-bg"></div>
         <div class="content">
-            <h1>Najdi svého fotografa.</h1>
-            <p class="subtitle">Nahrajte fotku, která se vám líbí, a naše AI vám najde tvůrce se stejným rukopisem.</p>
+            <img src="mobil.png" alt="MOMENTly App" class="mobile-mockup">
+            <div class="text-block">
+                <h1>Najdi svého fotografa.</h1>
+                <p class="subtitle">Nahrajte fotku, která se vám líbí, a naše AI vám najde tvůrce se stejným rukopisem.</p>
+                <div class="store-buttons">
+                    <a href="#"><img src="appstore.png" alt="App Store"></a>
+                    <a href="#"><img src="googleplay.png" alt="Google Play"></a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
