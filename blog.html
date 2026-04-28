@@ -24,7 +24,10 @@
 
         /* BLOG GRID - zachován pod hero sekcí */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: -50px auto 100px; padding: 0 5%; position: relative; z-index: 20; }
-        .blog-card { background: #fff; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .blog-card { background: #fff; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
+        .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.6; color: #555; font-size: 1rem; }
     </style>
 </head>
 <body>
@@ -37,6 +40,7 @@
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
     </nav>
+
     <div class="hero">
         <div class="brush-bg"></div>
         <div class="content">
@@ -44,9 +48,37 @@
             <p class="subtitle">Ponořte se do světa vizuálního rukopisu a zjistěte, jak AI mění svět fotografie.</p>
         </div>
     </div>
+
     <div class="blog-grid">
-        <div class="blog-card"><h3>Jak AI pozná váš styl?</h3><p>Technologie za MOMENTly.</p></div>
-        <div class="blog-card"><h3>Světlo jako podpis.</h3><p>Proč je práce se stíny klíčová.</p></div>
+        <div class="blog-card">
+            <h3>Jak AI pozná váš styl?</h3>
+            <p>Technologie za MOMENTly nehledá jen barvy. Naše algoritmy analyzují kompozici, hloubku ostrosti a způsob, jakým pracujete s kontrastem, aby našly dokonalou shodu.</p>
+        </div>
+
+        <div class="blog-card">
+            <h3>Světlo jako podpis.</h3>
+            <p>Proč je práce se stíny klíčová pro budování vizuální identity. Zjistěte, jak definovat svůj rukopis skrze přirozené i umělé světlo.</p>
+        </div>
+
+        <div class="blog-card">
+            <h3>Nová éra vyhledávání.</h3>
+            <p>Doby, kdy klienti listovali stovkami portfolií, končí. Budoucnost patří vizuální relevanci – klient nahraje inspiraci a systém najde vás.</p>
+        </div>
+
+        <div class="blog-card">
+            <h3>Psychologie barev.</h3>
+            <p>Jak vaše barevná paleta ovlivňuje emoce diváka a proč si vás díky určitému tónování lidé zapamatují na první pohled.</p>
+        </div>
+
+        <div class="blog-card">
+            <h3>Portfolio, které prodává.</h3>
+            <p>Tipy pro fotografy, jak vybrat těch pravých 20 snímků, které nejlépe reprezentují jejich unikátní styl pro AI algoritmy.</p>
+        </div>
+
+        <div class="blog-card">
+            <h3>MOMENTly v praxi.</h3>
+            <p>Rozhovory s prvními fotografy, kteří díky naší platformě našli klienty s přesně takovými požadavky, které je baví fotit nejvíce.</p>
+        </div>
     </div>
 </body>
 </html>
