@@ -41,7 +41,8 @@
         .benefits h2 { font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 60px; font-weight: 600; letter-spacing: -1px; }
         .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; }
         .benefit { display: flex; gap: 20px; align-items: flex-start; }
-        .benefit-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--bg-color); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.4rem; }
+        .benefit-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--bg-color); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .benefit-icon svg { width: 22px; height: 22px; stroke: var(--teracotta); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
         .benefit h3 { font-size: 1.4rem; margin: 0 0 8px; }
         .benefit p { font-family: 'Inter', sans-serif; color: #666; font-size: 0.95rem; line-height: 1.6; margin: 0; }
 
@@ -108,28 +109,36 @@
             <h2>Proč MOMENTly?</h2>
             <div class="benefits-grid">
                 <div class="benefit">
-                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/></svg>
+                    </div>
                     <div>
                         <h3>Klienti, kteří vás chtějí</h3>
                         <p>Žádné dotazy od lidí, kteří hledají něco jiného. AI párování zajistí, že vás kontaktují pouze ti, kdo milují přesně váš styl.</p>
                     </div>
                 </div>
                 <div class="benefit">
-                    <div class="benefit-icon">📸</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M16.5 7.5h.01"/></svg>
+                    </div>
                     <div>
                         <h3>Portfolio, které pracuje za vás</h3>
                         <p>Nahrajte fotky do portfolia a nechte AI analyzovat váš vizuální rukopis. Čím více fotek, tím přesnější shody s potenciálními klienty.</p>
                     </div>
                 </div>
                 <div class="benefit">
-                    <div class="benefit-icon">💬</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
                     <div>
                         <h3>Vše na jednom místě</h3>
                         <p>Chat s klienty, dohodnutí podmínek i digitální potvrzení zakázky – vše přímo v aplikaci bez nutnosti přepínat mezi e-mailem a zprávami.</p>
                     </div>
                 </div>
                 <div class="benefit">
-                    <div class="benefit-icon">⭐</div>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
                     <div>
                         <h3>Budujte si reputaci</h3>
                         <p>Po každém focení klient může zanechat hodnocení. Vaše recenze a rating rostou s každou úspěšnou zakázkou a zvyšují důvěryhodnost profilu.</p>
