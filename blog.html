@@ -28,6 +28,31 @@
         .blog-card:hover { transform: translateY(-5px); }
         .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
         .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.6; color: #555; font-size: 1rem; }
+
+        /* HAMBURGER MENU */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 2000; }
+        .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--text-dark); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        @media (max-width: 767px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: var(--bg-color);
+                justify-content: center;
+                align-items: center;
+                z-index: 1500;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { padding: 15px 0; }
+            .nav-links a { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -39,6 +64,9 @@
             <li><a href="blog.html" class="active">Blog</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <div class="hero">
@@ -80,5 +108,11 @@
             <p>Rozhovory s prvními fotografy, kteří díky naší platformě našli klienty s přesně takovými požadavky, které je baví fotit nejvíce.</p>
         </div>
     </div>
+    <script>
+        const btn = document.getElementById("hamburger");
+        const nav = document.querySelector(".nav-links");
+        btn.addEventListener("click", () => { btn.classList.toggle("open"); nav.classList.toggle("open"); });
+        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); nav.classList.remove("open"); }));
+    </script>
 </body>
 </html>
