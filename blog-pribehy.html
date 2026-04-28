@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOMENTly v praxi | MOMENTly Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
+        body { margin: 0; padding: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); overflow-x: hidden; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; background: var(--bg-color); position: sticky; top: 0; width: 100%; box-sizing: border-box; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06); }
+        .logo img { height: 70px; width: auto; }
+        .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; }
+        .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
+        .article-wrap { max-width: 720px; margin: 0 auto; padding: 60px 5% 100px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--teracotta); text-decoration: none; margin-bottom: 40px; font-weight: 600; }
+        .article-tag { display: inline-block; background: white; color: var(--teracotta); font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+        .article-wrap h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.05; margin: 0 0 20px; font-weight: 600; letter-spacing: -1.5px; }
+        .article-meta { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #999; margin-bottom: 40px; }
+        .article-body { font-size: 1.2rem; line-height: 1.8; color: #333; }
+        .article-body p { margin: 0 0 28px; }
+        .article-body h2 { font-size: 1.9rem; margin: 48px 0 16px; letter-spacing: -0.5px; }
+        .article-highlight { background: white; border-left: 4px solid var(--teracotta); padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 36px 0; font-size: 1.15rem; color: #555; font-style: italic; }
+        .quote-block { background: white; border-radius: 20px; padding: 30px; margin: 40px 0; }
+        .quote-text { font-size: 1.25rem; line-height: 1.7; color: #333; margin: 0 0 16px; font-style: italic; }
+        .quote-author { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--teracotta); font-weight: 600; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 2000; }
+        .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--text-dark); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 767px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
+            .nav-links.open { display: flex; }
+            .nav-links li { padding: 15px 0; }
+            .nav-links a { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Jak to funguje</a></li>
+            <li><a href="fotografove.html">Pro fotografy</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="article-wrap">
+        <a href="blog.html" class="back-link">← Zpět na blog</a>
+        <span class="article-tag">Příběhy</span>
+        <h1>MOMENTly v praxi.</h1>
+        <div class="article-meta">6 minut čtení · Příběhy fotografů</div>
+
+        <div class="article-body">
+            <p>Nejlepší důkaz funguje vždy lépe než sebepřesvědčivější argument. Požádali jsme několik fotografů, kteří MOMENTly používají od prvních dnů, aby nám řekli, jak platforma změnila jejich práci. Jejich odpovědi nás překvapily – a zároveň nás utvrdily v tom, že jdeme správnou cestou.</p>
+
+            <h2>Tereza, svatební fotografka, Praha</h2>
+            <div class="quote-block">
+                <p class="quote-text">„Dřív jsem dostávala dotazy od lidí, kteří si vybrali fotografa hlavně podle ceny. Teď mi píšou klienti, kteří mi řeknou: ‚Vidím vaše fotky a přesně tohle chceme.' Ten rozdíl v komunikaci je neuvěřitelný. Zakázky jsou příjemnější a výsledky jsou lepší, protože klient ví, co dostane."</p>
+                <div class="quote-author">Tereza N., 4 roky ve fotografii</div>
+            </div>
+
+            <h2>Martin, produktový fotograf, Brno</h2>
+            <div class="quote-block">
+                <p class="quote-text">„Čekal jsem, že AI párování bude nějaká sci-fi funkce, která v praxi nefunguje. Opak je pravdou. Hned první klient přes MOMENTly byl firma, která hledala přesně můj styl – čistý, minimalistický, s důrazem na detail. Ani jsem jim nemusel vysvětlovat, co umím. Viděli to sami."</p>
+                <div class="quote-author">Martin K., produktový fotograf</div>
+            </div>
+
+            <h2>Lucie, rodinná fotografka, Ostrava</h2>
+            <div class="quote-block">
+                <p class="quote-text">„Největší překvapení bylo, jak moc se zlepšila komunikace před focením. Klienti přišli s jasnou představou, protože si mě vybrali na základě konkrétní fotky. Focení bylo uvolněnější a výsledky přesně takové, jaké chtěli. Žádná zklamání."</p>
+                <div class="quote-author">Lucie D., rodinná fotografka</div>
+            </div>
+
+            <h2>Co mají společného</h2>
+            <p>Všechny tři příběhy spojuje jedno: zákazník přišel připravený. Věděl, co chce, protože si fotografa nevybral podle slov nebo ceny, ale podle vizuálního pocitu. A to mění celou dynamiku spolupráce – od prvního dotazu až po předání fotek.</p>
+            <p>To je přesně to, pro co MOMENTly vzniklo. Propojit správné lidi. A nechat fotografii mluvit za sebe.</p>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById("hamburger");
+        const nav = document.querySelector(".nav-links");
+        btn.addEventListener("click", () => { btn.classList.toggle("open"); nav.classList.toggle("open"); });
+        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); nav.classList.remove("open"); }));
+    </script>
+</body>
+</html>

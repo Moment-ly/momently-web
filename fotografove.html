@@ -23,22 +23,10 @@
         .text-block { text-align: center; max-width: 650px; }
         
         h1 { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 1; margin: 0 0 20px 0; font-weight: 600; letter-spacing: -2px; }
-        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.5; color: #444; margin-bottom: 35px; font-family: 'Inter', sans-serif; }
+        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.6; color: #444; margin-bottom: 35px; font-family: 'Inter', sans-serif; }
 
         .btn-container { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
-        .app-btn { 
-            background-color: var(--teracotta); 
-            color: white; 
-            text-decoration: none; 
-            padding: 10px 20px; 
-            border-radius: 12px; 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            font-family: 'Inter', sans-serif; 
-            transition: transform 0.2s; 
-            box-shadow: 0 10px 20px rgba(166, 115, 91, 0.2);
-        }
+        .app-btn { background-color: var(--teracotta); color: white; text-decoration: none; padding: 10px 20px; border-radius: 12px; display: flex; align-items: center; gap: 12px; font-family: 'Inter', sans-serif; transition: transform 0.2s; box-shadow: 0 10px 20px rgba(166, 115, 91, 0.2); }
         .app-btn:hover { transform: translateY(-3px); }
         .app-btn i { font-size: 1.8rem; }
         .btn-text { text-align: left; line-height: 1.1; }
@@ -47,6 +35,16 @@
 
         .mobile-mockup { width: 100%; max-width: 350px; filter: drop-shadow(0 30px 60px rgba(166, 115, 91, 0.25)); }
 
+        /* VÝHODY */
+        .benefits { background: white; padding: 80px 5%; }
+        .benefits-inner { max-width: 1200px; margin: 0 auto; }
+        .benefits h2 { font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 60px; font-weight: 600; letter-spacing: -1px; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; }
+        .benefit { display: flex; gap: 20px; align-items: flex-start; }
+        .benefit-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--bg-color); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.4rem; }
+        .benefit h3 { font-size: 1.4rem; margin: 0 0 8px; }
+        .benefit p { font-family: 'Inter', sans-serif; color: #666; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
         @media (min-width: 768px) {
             .content { flex-direction: row-reverse; text-align: left; justify-content: space-between; }
             .text-block { text-align: left; flex: 1; }
@@ -54,7 +52,6 @@
             .mobile-mockup { max-width: 450px; }
         }
 
-        /* HAMBURGER MENU */
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 2000; }
         .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--text-dark); border-radius: 2px; transition: all 0.3s ease; }
         .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -63,17 +60,7 @@
 
         @media (max-width: 767px) {
             .hamburger { display: flex; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                gap: 0;
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background-color: var(--bg-color);
-                justify-content: center;
-                align-items: center;
-                z-index: 1500;
-            }
+            .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
             .nav-links.open { display: flex; }
             .nav-links li { padding: 15px 0; }
             .nav-links a { font-size: 1.4rem; }
@@ -100,7 +87,7 @@
             <img src="mobil.png" alt="MOMENTly pro fotografy" class="mobile-mockup">
             <div class="text-block">
                 <h1>Ukaž svůj styl.</h1>
-                <p class="subtitle">Získejte zakázky, které ladí s vaším vizuálním rukopisem. Nechte AI, ať vám najde ty správné klienty.</p>
+                <p class="subtitle">Přestaňte oslovovat klienty naslepo. MOMENTly analyzuje váš vizuální rukopis a přivádí vám klienty, kteří přesně vědí, co od vás chtějí – protože si vás sami vybrali podle stylu.</p>
                 
                 <div class="btn-container">
                     <a href="#" class="app-btn">
@@ -115,6 +102,43 @@
             </div>
         </div>
     </div>
+
+    <div class="benefits">
+        <div class="benefits-inner">
+            <h2>Proč MOMENTly?</h2>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <div class="benefit-icon">🎯</div>
+                    <div>
+                        <h3>Klienti, kteří vás chtějí</h3>
+                        <p>Žádné dotazy od lidí, kteří hledají něco jiného. AI párování zajistí, že vás kontaktují pouze ti, kdo milují přesně váš styl.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">📸</div>
+                    <div>
+                        <h3>Portfolio, které pracuje za vás</h3>
+                        <p>Nahrajte fotky do portfolia a nechte AI analyzovat váš vizuální rukopis. Čím více fotek, tím přesnější shody s potenciálními klienty.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">💬</div>
+                    <div>
+                        <h3>Vše na jednom místě</h3>
+                        <p>Chat s klienty, dohodnutí podmínek i digitální potvrzení zakázky – vše přímo v aplikaci bez nutnosti přepínat mezi e-mailem a zprávami.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⭐</div>
+                    <div>
+                        <h3>Budujte si reputaci</h3>
+                        <p>Po každém focení klient může zanechat hodnocení. Vaše recenze a rating rostou s každou úspěšnou zakázkou a zvyšují důvěryhodnost profilu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const btn = document.getElementById("hamburger");
         const nav = document.querySelector(".nav-links");
