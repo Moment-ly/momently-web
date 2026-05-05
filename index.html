@@ -72,11 +72,9 @@
         @keyframes slideFromBottom { to { opacity: 1; transform: translateY(0); } }
 
         /* H1 — word by word reveal */
-        h1 { font-size: clamp(3.5rem, 8vw, 6rem); line-height: 0.95; font-weight: 600; letter-spacing: -3px; margin-bottom: 25px; overflow: hidden; }
-        .word-wrap { overflow: visible; display: block; padding-bottom: 0.15em; margin-bottom: -0.15em; }
-        .word { display: inline-block; opacity: 0; transform: translateY(100%); animation: wordUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .word.italic { font-style: italic; color: var(--teracotta); }
-        @keyframes wordUp { to { opacity: 1; transform: translateY(0); } }
+        h1 { font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1.05; font-weight: 600; letter-spacing: -3px; margin-bottom: 25px; opacity: 0; transform: translateY(30px); animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards 0.4s; padding-bottom: 0.1em; }
+        h1 em { font-style: italic; color: var(--teracotta); }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
         .subtitle { font-size: clamp(1rem, 1.8vw, 1.2rem); line-height: 1.65; color: var(--text-mid); font-family: 'Inter', sans-serif; font-weight: 300; margin-bottom: 40px; opacity: 0; transform: translateY(20px); animation: slideFromBottom 0.9s cubic-bezier(0.16,1,0.3,1) forwards 0.9s; }
 
@@ -196,10 +194,7 @@
             <div class="text-block">
                 <div class="tag-line">AI &middot; Fotografie &middot; CZ &amp; SK</div>
 
-                <h1>
-                    <span class="word-wrap"><span class="word" style="animation-delay:0.4s">Najdi</span> <span class="word" style="animation-delay:0.52s">svého</span></span>
-                    <span class="word-wrap"><span class="word italic" style="animation-delay:0.65s">fotografa.</span></span>
-                </h1>
+                <h1>Najdi svého<br><em>fotografa.</em></h1>
 
                 <p class="subtitle">Nahraj fotku, která se ti líbí, a naše AI najde tvůrce se stejným rukopisem. Žádné listování. Jen dokonalá shoda.</p>
 
