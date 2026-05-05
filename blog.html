@@ -23,7 +23,10 @@
 
         /* BLOG GRID - zachován pod hero sekcí */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: -50px auto 100px; padding: 0 5%; position: relative; z-index: 20; }
-        .blog-card { background: #fff; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
+        .blog-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.35s ease; display: block; text-decoration: none; color: inherit; cursor: pointer; border: 1px solid rgba(166,115,91,0.08); }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 30px 50px rgba(166,115,91,0.14); }
+        .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
+        .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.65; color: #555; font-size: 0.95rem; margin-bottom: 0; }
         .blog-card:hover { transform: translateY(-5px); }
         .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
         .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.6; color: #555; font-size: 1rem; }
@@ -54,7 +57,10 @@
         .app-btn:hover::before { left: 100%; }
         .app-btn:hover { transform: translateY(-4px); box-shadow: 0 25px 40px rgba(166,115,91,0.4) !important; }
 
-        .blog-card { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.3s ease !important; }
+        .blog-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.35s ease; display: block; text-decoration: none; color: inherit; cursor: pointer; border: 1px solid rgba(166,115,91,0.08); }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 30px 50px rgba(166,115,91,0.14); }
+        .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
+        .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.65; color: #555; font-size: 0.95rem; margin-bottom: 0; }
         .blog-card.visible { opacity: 1 !important; transform: translateY(0) !important; }
         .blog-card:hover { transform: translateY(-8px) scale(1.01) !important; box-shadow: 0 25px 50px rgba(166,115,91,0.12) !important; }
         .blog-card h3 { transition: color 0.2s; }
@@ -105,7 +111,10 @@
         .read-more { display: inline-block; margin-top: 15px; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--teracotta); text-decoration: none; letter-spacing: 0.5px; position: relative; padding-bottom: 2px; }
         .read-more::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--teracotta); transition: width 0.3s ease; }
         .read-more:hover::after { width: 100%; }
-        .blog-card { cursor: pointer; }
+        .blog-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: transform 0.35s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.35s ease; display: block; text-decoration: none; color: inherit; cursor: pointer; border: 1px solid rgba(166,115,91,0.08); }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 30px 50px rgba(166,115,91,0.14); }
+        .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
+        .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.65; color: #555; font-size: 0.95rem; margin-bottom: 0; }
     </style>
 </head>
 <body>
@@ -131,12 +140,45 @@
         </div>
     </div>
 
-    <div class="blog-grid">
-        <div class="blog-card">
-            <a href="#clanek-1" style="text-decoration:none;color:inherit;"><h3>Jak AI pozná váš styl?</h3>
+        <div class="blog-grid">
+
+        <a href="clanek-1.html" class="blog-card">
+            <h3>Jak AI pozná váš styl?</h3>
             <p>Technologie za MOMENTly nehledá jen barvy. Naše algoritmy analyzují kompozici, hloubku ostrosti a způsob, jakým pracujete s kontrastem, aby našly dokonalou shodu.</p>
-            <a href="#" class="read-more">Číst více →</a>
-        </div>
+            <span class="read-more">Číst více →</span>
+        </a>
+
+        <a href="clanek-2.html" class="blog-card">
+            <h3>Světlo jako podpis.</h3>
+            <p>Proč je práce se stíny klíčová pro budování vizuální identity. Zjistěte, jak definovat svůj rukopis skrze přirozené i umělé světlo.</p>
+            <span class="read-more">Číst více →</span>
+        </a>
+
+        <a href="clanek-3.html" class="blog-card">
+            <h3>Nová éra vyhledávání.</h3>
+            <p>Doby, kdy klienti listovali stovkami portfolií, končí. Budoucnost patří vizuální relevanci – klient nahraje inspiraci a systém najde vás.</p>
+            <span class="read-more">Číst více →</span>
+        </a>
+
+        <a href="clanek-4.html" class="blog-card">
+            <h3>Psychologie barev.</h3>
+            <p>Jak vaše barevná paleta ovlivňuje emoce diváka a proč si vás díky určitému tónování lidé zapamatují na první pohled.</p>
+            <span class="read-more">Číst více →</span>
+        </a>
+
+        <a href="clanek-5.html" class="blog-card">
+            <h3>Portfolio, které prodává.</h3>
+            <p>Tipy pro fotografy, jak vybrat těch pravých 20 snímků, které nejlépe reprezentují jejich unikátní styl pro AI algoritmy.</p>
+            <span class="read-more">Číst více →</span>
+        </a>
+
+        <a href="clanek-6.html" class="blog-card">
+            <h3>MOMENTly v praxi.</h3>
+            <p>Rozhovory s prvními fotografy, kteří díky naší platformě našli klienty s přesně takovými požadavky, které je baví fotit nejvíce.</p>
+            <span class="read-more">Číst více →</span>
+        </a>
+
+    </div>
 
         <div class="blog-card">
             <a href="#clanek-2" style="text-decoration:none;color:inherit;"><h3>Světlo jako podpis.</h3>

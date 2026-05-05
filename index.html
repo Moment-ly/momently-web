@@ -84,13 +84,13 @@
         @keyframes phoneReveal { from { opacity: 0; transform: translateY(60px) rotate(-5deg); } to { opacity: 1; transform: translateY(0) rotate(0deg); } }
         .phone-float { }
         
-        .phone-container { position: relative; width: 340px; }
+        .phone-container { position: relative; width: 400px; }
         .phone-glow { position: absolute; width: 220px; height: 220px; background: radial-gradient(circle, rgba(166,115,91,0.55) 0%, transparent 70%); bottom: -50px; left: 50%; transform: translateX(-50%); filter: blur(35px); animation: glowPulse 3s ease-in-out infinite; }
         @keyframes glowPulse { 0%,100% { opacity: 0.6; transform: translateX(-50%) scale(1); } 50% { opacity: 1; transform: translateX(-50%) scale(1.2); } }
-        .phone-frame { position: relative; width: 340px; z-index: 5; filter: drop-shadow(0 30px 60px rgba(100,60,40,0.45)) drop-shadow(0 0 40px rgba(166,115,91,0.3)); }
+        .phone-frame { position: relative; width: 400px; z-index: 5; filter: drop-shadow(0 30px 60px rgba(100,60,40,0.45)) drop-shadow(0 0 40px rgba(166,115,91,0.3)); }
         .phone-frame img.frame-img { width: 100%; display: block; position: relative; z-index: 10; pointer-events: none; }
-        .phone-screen { position: absolute; top: 9.38%; left: 18.26%; width: 63.48%; height: 84.24%; border-radius: 12% / 6%; overflow: hidden; z-index: 1; background: #111; }
-        .screen-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.9s ease; object-fit: cover; object-position: top; }
+        .phone-screen { position: absolute; top: 9.38%; left: 18.26%; width: 63.48%; height: 84.24%; border-radius: 9% / 4.5%; overflow: hidden; z-index: 1; background: #000; }
+        .screen-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.9s ease; object-fit: cover; object-position: center top; display: block; }
         .screen-slide.active { opacity: 1; }
         .slide-dots { position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 20; }
         .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teracotta); opacity: 0.35; transition: all 0.3s ease; cursor: pointer; }
@@ -118,14 +118,6 @@
         .card-title { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 10px; }
         .card-text { font-family: 'Inter', sans-serif; font-size: 0.88rem; line-height: 1.7; color: var(--text-mid); font-weight: 300; }
         .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px; margin-top: 60px; } to { transform: translateX(-50%); } }
-
-        /* CTA */
-        .cta-section { text-align: center; padding: 140px 5% 160px; position: relative; overflow: hidden; z-index: 1; max-width: 100%; }
-        .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(166,115,91,0.07) 0%, transparent 70%); }
-        .cta-section h2 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 600; letter-spacing: -3px; margin-bottom: 20px; position: relative; z-index: 1; text-align: center; width: 100%; }
-        .cta-section h2 em { font-style: italic; color: var(--teracotta); }
-        .cta-section p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--text-mid); margin-bottom: 45px; font-weight: 300; position: relative; z-index: 1; text-align: center; }
-        .cta-btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
         /* FOOTER */
         footer { background: var(--text-dark); color: rgba(255,255,255,0.55); padding: 50px 5%; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', sans-serif; font-size: 0.85rem; flex-wrap: wrap; gap: 20px; }
@@ -260,16 +252,6 @@
                 <div class="card-title">Najdeš svůj match.</div>
                 <p class="card-text">Zobrazíme fotografy, jejichž portfolio ladí s tím, co hledáš. Stačí si vybrat a ozvat se.</p>
             </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="cta-bg"></div>
-        <h2>Připraven/<em>a</em><br>na svůj moment?</h2>
-        <p>Stáhni appku a najdi svého fotografa ještě dnes.</p>
-        <div class="cta-btn-group">
-            <a href="#" class="app-btn"><i class="fab fa-apple"></i><div class="btn-text"><span>Stahuj na</span><strong>App Store</strong></div></a>
-            <a href="#" class="app-btn"><i class="fab fa-google-play"></i><div class="btn-text"><span>Stahuj na</span><strong>Google Play</strong></div></a>
         </div>
     </section>
 

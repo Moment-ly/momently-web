@@ -81,8 +81,8 @@
 
         /* PHONE SLIDESHOW */
         .phone-wrapper-inner { position: relative; }
-        .phone-screen-f { position: absolute; top: 9.38%; left: 18.26%; width: 63.48%; height: 84.24%; border-radius: 12% / 6%; overflow: hidden; z-index: 1; background: #111; }
-        .screen-slide-f { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.9s ease; object-fit: cover; object-position: top; }
+        .phone-screen-f { position: absolute; top: 9.38%; left: 18.26%; width: 63.48%; height: 84.24%; border-radius: 9% / 4.5%; overflow: hidden; z-index: 1; background: #000; }
+        .screen-slide-f { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.9s ease; object-fit: cover; object-position: center top; display: block; }
         .screen-slide-f.active { opacity: 1; }
         .frame-img-f { width: 100%; display: block; position: relative; z-index: 10; pointer-events: none; }
         .phone-float-f {  }
@@ -164,7 +164,7 @@
         <div class="content">
             <div class="phone-wrapper-inner" style="position:relative; flex-shrink:0;">
             <div class="phone-glow-f"></div>
-            <div class="phone-float-f" style="position:relative; width:340px;">
+            <div class="phone-float-f" style="position:relative; width:400px;">
                 <div class="phone-screen-f">
                     <img src="IMG_2122.JPG" class="screen-slide-f active" alt="s1">
                     <img src="IMG_2127.JPG" class="screen-slide-f" alt="s2">
