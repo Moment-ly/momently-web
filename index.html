@@ -120,11 +120,11 @@
         .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px; margin-top: 60px; } to { transform: translateX(-50%); } }
 
         /* CTA */
-        .cta-section { text-align: center; padding: 130px 5%; position: relative; overflow: hidden; z-index: 1; }
+        .cta-section { text-align: center; padding: 140px 5% 160px; position: relative; overflow: hidden; z-index: 1; max-width: 100%; }
         .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(166,115,91,0.07) 0%, transparent 70%); }
-        .cta-section h2 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 600; letter-spacing: -3px; margin-bottom: 20px; position: relative; z-index: 1; }
+        .cta-section h2 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 600; letter-spacing: -3px; margin-bottom: 20px; position: relative; z-index: 1; text-align: center; width: 100%; }
         .cta-section h2 em { font-style: italic; color: var(--teracotta); }
-        .cta-section p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--text-mid); margin-bottom: 45px; font-weight: 300; position: relative; z-index: 1; }
+        .cta-section p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--text-mid); margin-bottom: 45px; font-weight: 300; position: relative; z-index: 1; text-align: center; }
         .cta-btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
         /* FOOTER */
@@ -149,6 +149,27 @@
             .phone-container, .phone-frame { width: 220px; }
             .badge { display: none; }
             .stats-row { gap: 20px; }
+        }
+
+        /* GLOBAL BRUSH BACKGROUND */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110vw; height: 100vh;
+            background-image: url('stetec.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+            animation: brushBg 7s ease-in-out infinite;
+        }
+        @keyframes brushBg {
+            0%,100% { opacity: 0.15; transform: translate(-50%,-50%) scale(1); }
+            50% { opacity: 0.2; transform: translate(-50%,-50%) scale(1.02); }
         }
     </style>
 </head>

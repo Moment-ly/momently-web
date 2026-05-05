@@ -102,17 +102,62 @@
         .proc-item:hover .proc-icon { background: var(--teracotta); color: white; transform: scale(1.1) rotate(-5deg); }
         .proc-item h3 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 10px; }
         .proc-item p { font-family: 'Inter', sans-serif; font-size: 0.88rem; line-height: 1.7; color: var(--text-mid); font-weight: 300; }
+
+        /* HAMBURGER MENU */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 2000; }
+        .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--text-dark); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 767px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none !important; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
+            .nav-links.open { display: flex !important; }
+            .nav-links li { padding: 15px 0; }
+            .nav-links a { font-size: 1.4rem; }
+        }
+
+        /* GLOBAL BRUSH BACKGROUND */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110vw; height: 100vh;
+            background-image: url('stetec.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+            animation: brushBg 7s ease-in-out infinite;
+        }
+        @keyframes brushBg {
+            0%,100% { opacity: 0.15; transform: translate(-50%,-50%) scale(1); }
+            50% { opacity: 0.2; transform: translate(-50%,-50%) scale(1.02); }
+        }
+
+        /* FLOATING BLOBS - global */
+        .blob-global { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.12; pointer-events: none; z-index: 0; animation: blobG 10s ease-in-out infinite; }
+        .blob-g1 { width: 500px; height: 500px; background: var(--teracotta); top: -150px; right: -120px; }
+        .blob-g2 { width: 350px; height: 350px; background: #C4957A; bottom: -80px; left: -100px; animation-delay: -4s; }
+        @keyframes blobG { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(20px,-25px) scale(1.04); } }
+
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Jak to funguje</a></li>
             <li><a href="fotografove.html" class="active">Pro fotografy</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <div class="hero">
@@ -200,6 +245,24 @@
         if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*130);
     }), {threshold:0.1});
     document.querySelectorAll('.proc-item').forEach(c=>_pobs.observe(c));
+    </script>
+    <script>
+    (function() {
+        var hbtn = document.getElementById('hamburger');
+        var hnav = document.getElementById('navLinks');
+        if (hbtn && hnav) {
+            hbtn.addEventListener('click', function() {
+                hbtn.classList.toggle('open');
+                hnav.classList.toggle('open');
+            });
+            hnav.querySelectorAll('a').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    hbtn.classList.remove('open');
+                    hnav.classList.remove('open');
+                });
+            });
+        }
+    })();
     </script>
 </body>
 </html>
