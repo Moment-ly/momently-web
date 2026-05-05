@@ -6,6 +6,7 @@
     <title>Blog | MOMENTly</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* CSS JE NAPROSTO TOTOŽNÉ S INDEX.HTML */
         :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
         body { margin: 0; padding: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); overflow-x: hidden; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; position: absolute; width: 100%; box-sizing: border-box; z-index: 1000; }
@@ -19,32 +20,46 @@
         
         .content { position: relative; z-index: 10; width: 100%; max-width: 1200px; }
         h1 { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 1; margin: 0 0 15px 0; font-weight: 600; letter-spacing: -2px; }
-        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.6; color: #444; font-family: 'Inter', sans-serif; max-width: 650px; margin: 0 auto; }
+        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.5; color: #444; font-family: 'Inter', sans-serif; max-width: 750px; margin: 0 auto; }
 
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; max-width: 1200px; margin: -30px auto 100px; padding: 0 5%; position: relative; z-index: 20; }
-        .blog-card { background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; text-decoration: none; color: inherit; display: block; }
-        .blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(166, 115, 91, 0.12); }
-        .blog-card-body { padding: 28px; }
-        .blog-tag { display: inline-block; background: var(--bg-color); color: var(--teracotta); font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
-        .blog-card h3 { color: var(--text-dark); font-size: 1.7rem; margin: 0 0 12px 0; line-height: 1.2; }
-        .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.65; color: #666; font-size: 0.95rem; margin: 0 0 20px 0; }
-        .blog-read-more { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--teracotta); display: flex; align-items: center; gap: 6px; }
-        .blog-read-more::after { content: '→'; transition: transform 0.2s; }
-        .blog-card:hover .blog-read-more::after { transform: translateX(4px); }
+        /* BLOG GRID - zachován pod hero sekcí */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: -50px auto 100px; padding: 0 5%; position: relative; z-index: 20; }
+        .blog-card { background: #fff; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s ease; }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
+        .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.6; color: #555; font-size: 1rem; }
+        /* PARTICLES */
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        /* NAV SCROLLED */
+        nav { transition: all 0.4s ease; }
+        nav.scrolled { background: rgba(244,239,234,0.93) !important; backdrop-filter: blur(20px); padding-top: 18px !important; padding-bottom: 18px !important; box-shadow: 0 4px 30px rgba(166,115,91,0.08); }
+        .logo img { transition: transform 0.3s ease; }
+        .logo img:hover { transform: scale(1.05) rotate(-1deg); }
+        .nav-links a { position: relative; padding-bottom: 3px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--teracotta); transition: width 0.3s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        /* BLOB */
+        .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.18; pointer-events: none; animation: blobFloat2 8s ease-in-out infinite; }
+        .blob-a { width: 400px; height: 400px; background: var(--teracotta); top: -100px; right: -80px; }
+        .blob-b { width: 280px; height: 280px; background: #C4957A; bottom: -40px; left: -60px; animation-delay: -4s; }
+        @keyframes blobFloat2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(15px,-20px); } }
+        /* HERO CONTENT ANIM */
+        .hero-anim { opacity: 0; animation: fadeUpIn 0.9s ease forwards; }
+        .hero-anim:nth-child(1) { animation-delay: 0.3s; }
+        .hero-anim:nth-child(2) { animation-delay: 0.5s; }
+        .hero-anim:nth-child(3) { animation-delay: 0.7s; }
+        @keyframes fadeUpIn { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+        /* APP BTN shimmer */
+        .app-btn { position: relative; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .app-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s ease; }
+        .app-btn:hover::before { left: 100%; }
+        .app-btn:hover { transform: translateY(-4px); box-shadow: 0 25px 40px rgba(166,115,91,0.4) !important; }
 
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 2000; }
-        .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--text-dark); border-radius: 2px; transition: all 0.3s ease; }
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        @media (max-width: 767px) {
-            .hamburger { display: flex; }
-            .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
-            .nav-links.open { display: flex; }
-            .nav-links li { padding: 15px 0; }
-            .nav-links a { font-size: 1.4rem; }
-        }
+        .blog-card { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.3s ease !important; }
+        .blog-card.visible { opacity: 1 !important; transform: translateY(0) !important; }
+        .blog-card:hover { transform: translateY(-8px) scale(1.01) !important; box-shadow: 0 25px 50px rgba(166,115,91,0.12) !important; }
+        .blog-card h3 { transition: color 0.2s; }
+        .blog-card:hover h3 { color: #7D5242; }
     </style>
 </head>
 <body>
@@ -56,80 +71,62 @@
             <li><a href="blog.html" class="active">Blog</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
     </nav>
 
     <div class="hero">
-        <div class="brush-bg"></div>
+        <div class="blob blob-a"></div><div class="blob blob-b"></div><div class="brush-bg"></div>
         <div class="content">
             <h1>Inspirace a styl.</h1>
-            <p class="subtitle">Tipy pro fotografy i klienty. Jak funguje AI párování, jak budovat vizuální identitu a proč na stylu záleží víc než na technice.</p>
+            <p class="subtitle">Ponořte se do světa vizuálního rukopisu a zjistěte, jak AI mění svět fotografie.</p>
         </div>
     </div>
 
     <div class="blog-grid">
-        <a href="blog-ai-styl.html" class="blog-card">
-            <div class="blog-card-body">
-                <span class="blog-tag">Technologie</span>
-                <h3>Jak AI pozná váš styl?</h3>
-                <p>Technologie za MOMENTly nehledá jen barvy. Naše algoritmy analyzují kompozici, hloubku ostrosti i práci s kontrastem – a to vše proto, aby našly dokonalou shodu mezi klientem a fotografem.</p>
-                <div class="blog-read-more">Číst článek</div>
-            </div>
-        </a>
+        <div class="blog-card">
+            <h3>Jak AI pozná váš styl?</h3>
+            <p>Technologie za MOMENTly nehledá jen barvy. Naše algoritmy analyzují kompozici, hloubku ostrosti a způsob, jakým pracujete s kontrastem, aby našly dokonalou shodu.</p>
+        </div>
 
-        <a href="blog-svetlo.html" class="blog-card">
-            <div class="blog-card-body">
-                <span class="blog-tag">Fotografie</span>
-                <h3>Světlo jako podpis.</h3>
-                <p>Proč je práce se stíny klíčová pro budování vizuální identity. Zjistěte, jak definovat svůj rukopis skrze přirozené i umělé světlo a proč zákazníci vycítí váš styl dřív, než přečtou váš životopis.</p>
-                <div class="blog-read-more">Číst článek</div>
-            </div>
-        </a>
+        <div class="blog-card">
+            <h3>Světlo jako podpis.</h3>
+            <p>Proč je práce se stíny klíčová pro budování vizuální identity. Zjistěte, jak definovat svůj rukopis skrze přirozené i umělé světlo.</p>
+        </div>
 
-        <a href="blog-nova-era.html" class="blog-card">
-            <div class="blog-card-body">
-                <span class="blog-tag">Trend</span>
-                <h3>Nová éra vyhledávání.</h3>
-                <p>Doby, kdy klienti listovali stovkami portfolií, končí. Budoucnost patří vizuální relevanci – klient nahraje inspiraci a systém najde vás. Co to znamená pro fotografy a jak se připravit?</p>
-                <div class="blog-read-more">Číst článek</div>
-            </div>
-        </a>
+        <div class="blog-card">
+            <h3>Nová éra vyhledávání.</h3>
+            <p>Doby, kdy klienti listovali stovkami portfolií, končí. Budoucnost patří vizuální relevanci – klient nahraje inspiraci a systém najde vás.</p>
+        </div>
 
-        <a href="blog-barvy.html" class="blog-card">
-            <div class="blog-card-body">
-                <span class="blog-tag">Psychologie</span>
-                <h3>Psychologie barev.</h3>
-                <p>Jak vaše barevná paleta ovlivňuje emoce diváka a proč si vás díky určitému tónování lidé zapamatují na první pohled. Průvodce teplými, chladnými a neutrálními tóny ve fotografii.</p>
-                <div class="blog-read-more">Číst článek</div>
-            </div>
-        </a>
+        <div class="blog-card">
+            <h3>Psychologie barev.</h3>
+            <p>Jak vaše barevná paleta ovlivňuje emoce diváka a proč si vás díky určitému tónování lidé zapamatují na první pohled.</p>
+        </div>
 
-        <a href="blog-portfolio.html" class="blog-card">
-            <div class="blog-card-body">
-                <span class="blog-tag">Pro fotografy</span>
-                <h3>Portfolio, které prodává.</h3>
-                <p>Jak vybrat těch pravých 20 snímků, které nejlépe reprezentují váš unikátní styl – a jak je seřadit, aby AI algoritmy i klienti okamžitě pochopili, co nabízíte.</p>
-                <div class="blog-read-more">Číst článek</div>
-            </div>
-        </a>
+        <div class="blog-card">
+            <h3>Portfolio, které prodává.</h3>
+            <p>Tipy pro fotografy, jak vybrat těch pravých 20 snímků, které nejlépe reprezentují jejich unikátní styl pro AI algoritmy.</p>
+        </div>
 
-        <a href="blog-pribehy.html" class="blog-card">
-            <div class="blog-card-body">
-                <span class="blog-tag">Příběhy</span>
-                <h3>MOMENTly v praxi.</h3>
-                <p>Rozhovory s prvními fotografy, kteří díky naší platformě našli klienty s přesně takovými požadavky, které je baví fotit nejvíce. Co je překvapilo a co by poradili ostatním?</p>
-                <div class="blog-read-more">Číst článek</div>
-            </div>
-        </a>
+        <div class="blog-card">
+            <h3>MOMENTly v praxi.</h3>
+            <p>Rozhovory s prvními fotografy, kteří díky naší platformě našli klienty s přesně takovými požadavky, které je baví fotit nejvíce.</p>
+        </div>
     </div>
 
     <script>
-        const btn = document.getElementById("hamburger");
-        const nav = document.querySelector(".nav-links");
-        btn.addEventListener("click", () => { btn.classList.toggle("open"); nav.classList.toggle("open"); });
-        nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { btn.classList.remove("open"); nav.classList.remove("open"); }));
+    });
+    // PARTICLES
+    const _cnv=document.createElement('canvas'); _cnv.id='particles'; document.body.prepend(_cnv);
+    const _ctx=_cnv.getContext('2d');
+    function _rsz(){ _cnv.width=innerWidth; _cnv.height=innerHeight; } _rsz(); addEventListener('resize',_rsz);
+    const _pts=Array.from({length:45},()=>({x:Math.random()*_cnv.width,y:Math.random()*_cnv.height,r:Math.random()*2+.4,dx:(Math.random()-.5)*.35,dy:(Math.random()-.5)*.35,a:Math.random()*.35+.08}));
+    (function _dp(){ _ctx.clearRect(0,0,_cnv.width,_cnv.height); _pts.forEach(p=>{ _ctx.beginPath(); _ctx.arc(p.x,p.y,p.r,0,Math.PI*2); _ctx.fillStyle=`rgba(166,115,91,${p.a})`; _ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>_cnv.width)p.dx*=-1; if(p.y<0||p.y>_cnv.height)p.dy*=-1; }); requestAnimationFrame(_dp); })();
+    // NAV SCROLL
+    addEventListener('scroll',()=>{ document.querySelector('nav').classList.toggle('scrolled',scrollY>50); });
+    </script>
+    <script>
+    const _bobs = new IntersectionObserver(es => es.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*120); }), {threshold:0.1});
+    document.querySelectorAll('.blog-card').forEach(c=>_bobs.observe(c));
     </script>
 </body>
 </html>
