@@ -2,6 +2,8 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="moment-logo.png">
+    <link rel="apple-touch-icon" href="moment-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOMENTly | Najdi svého fotografa podle stylu | CZ & SK</title>
     <!-- SEO META -->
@@ -67,7 +69,7 @@
         @keyframes brushBg { 0%,100% { opacity: 0.15; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 0.20; transform: translate(-50%,-50%) scale(1.02); } }
 
         /* PARTICLES */
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; display: block; }
 
         /* BLOBS */
         .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.2; pointer-events: none; animation: blobFloat 8s ease-in-out infinite; }
@@ -146,7 +148,7 @@
         .phone-frame { position: relative; width: 400px; z-index: 5; filter: drop-shadow(0 30px 60px rgba(100,60,40,0.45)) drop-shadow(0 0 40px rgba(166,115,91,0.3)); }
         .phone-frame img.frame-img { width: 100%; display: block; position: relative; z-index: 10; pointer-events: none; }
         .phone-screen { position: absolute; top: 8.5%; left: 18.26%; width: 63.48%; height: 86%; border-radius: 9% / 4.5%; overflow: hidden; z-index: 1; background: #000; }
-        .screen-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.9s ease; object-fit: cover; object-position: center center; display: block; }
+        .screen-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease; object-fit: cover; object-position: center top; display: block; }
         .screen-slide.active { opacity: 1; }
         .slide-dots { position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 20; }
         .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teracotta); opacity: 0.35; transition: all 0.3s ease; cursor: pointer; }
@@ -190,10 +192,10 @@
         .section-divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(166,115,91,0.2), transparent); margin: 0; position: relative; z-index: 1; }
 
         /* FOOTER */
-        footer { background: var(--text-dark); color: rgba(255,255,255,0.55); padding: 50px 5%; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', sans-serif; font-size: 0.85rem; flex-wrap: wrap; gap: 20px; position: relative; z-index: 1; }
-        footer .footer-logo img { height: 50px; filter: brightness(0) invert(1); opacity: 0.6; }
-        footer a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-        footer a:hover { color: rgba(255,255,255,0.9); }
+        footer { background: transparent; border-top: 1px solid rgba(166,115,91,0.15); color: var(--text-mid); padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', sans-serif; font-size: 0.85rem; flex-wrap: wrap; gap: 20px; position: relative; z-index: 1; }
+        footer .footer-logo img { height: 45px; opacity: 0.7; }
+        footer a { color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--teracotta); }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
@@ -205,10 +207,51 @@
             .tag-line { justify-content: center; }
         }
         @media (max-width: 600px) {
-            .phone-container, .phone-frame { width: 240px; }
+            .phone-container, .phone-frame { width: 280px; }
             .badge { display: none; }
             .stats-row { gap: 15px; }
         }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 0; }
+        .faq-item { border-bottom: 1px solid rgba(166,115,91,0.15); }
+        .faq-q { width: 100%; background: none; border: none; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--text-dark); text-align: left; gap: 20px; }
+        .faq-q:hover { color: var(--teracotta); }
+        .faq-icon { font-size: 1.5rem; color: var(--teracotta); flex-shrink: 0; transition: transform 0.3s ease; font-weight: 300; }
+        .faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .faq-a.open { max-height: 200px; }
+        .faq-a p { font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.7; color: var(--text-mid); padding-bottom: 24px; font-weight: 300; }
+
+        /* NEWSLETTER */
+        .newsletter-section { padding: 100px 5%; position: relative; z-index: 1; }
+        .newsletter-inner { max-width: 1200px; margin: 0 auto; background: linear-gradient(135deg, rgba(166,115,91,0.08) 0%, rgba(196,149,122,0.05) 100%); border-radius: 32px; border: 1px solid rgba(166,115,91,0.12); padding: 70px 60px; display: flex; align-items: center; gap: 80px; flex-wrap: wrap; }
+        .newsletter-text { flex: 1; min-width: 260px; }
+        .newsletter-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -2px; margin: 8px 0 16px; line-height: 1; }
+        .newsletter-sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; max-width: 360px; }
+        .newsletter-form { flex: 1; min-width: 280px; }
+        .email-input-wrap { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+        .email-input-wrap input { flex: 1; min-width: 200px; padding: 14px 20px; border: 1.5px solid rgba(166,115,91,0.25); border-radius: 12px; background: white; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-dark); outline: none; transition: border-color 0.2s; }
+        .email-input-wrap input:focus { border-color: var(--teracotta); }
+        .email-input-wrap button { background: var(--teracotta); color: white; border: none; padding: 14px 24px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; box-shadow: 0 10px 25px rgba(166,115,91,0.3); }
+        .email-input-wrap button:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(166,115,91,0.4); }
+        .newsletter-success { color: var(--teracotta); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; display: none; margin-bottom: 10px; }
+        .newsletter-note { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: #aaa; line-height: 1.5; }
+        @media (max-width: 700px) {
+            .newsletter-inner { padding: 40px 30px; gap: 40px; }
+        }
+
+
+        /* COOKIE BANNER */
+        .cookie-banner { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--text-dark); color: rgba(255,255,255,0.85); font-family: 'Inter', sans-serif; font-size: 0.82rem; padding: 16px 24px; border-radius: 16px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 20px 60px rgba(0,0,0,0.25); max-width: 700px; width: calc(100% - 40px); flex-wrap: wrap; transition: opacity 0.4s, transform 0.4s; }
+        .cookie-banner.hidden { opacity: 0; transform: translateX(-50%) translateY(20px); pointer-events: none; }
+        .cookie-banner p { margin: 0; flex: 1; min-width: 200px; line-height: 1.5; }
+        .cookie-banner a { color: var(--teracotta, #A6735B); text-decoration: none; }
+        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+        .cookie-accept { background: var(--teracotta, #A6735B); color: white; border: none; padding: 9px 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .cookie-accept:hover { opacity: 0.85; }
+        .cookie-decline { background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 9px 16px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; cursor: pointer; transition: opacity 0.2s; }
+        .cookie-decline:hover { opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -247,9 +290,9 @@
                 </div>
 
                 <div class="stats-row">
-                    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">shoda stylu</div></div>
-                    <div class="stat"><div class="stat-num">AI</div><div class="stat-label">matching</div></div>
-                    <div class="stat"><div class="stat-num">CZ &amp; SK</div><div class="stat-label">pokrytí</div></div>
+                    <div class="stat"><div class="stat-num" data-count="93" data-suffix="%">0%</div><div class="stat-label">přesnost shody</div></div>
+                    <div class="stat"><div class="stat-num" data-count="2" data-suffix=" min">0 min</div><div class="stat-label">do výsledků</div></div>
+                    <div class="stat"><div class="stat-num" data-count="2" data-prefix="CZ" data-suffix="&amp;SK">CZ&amp;SK</div><div class="stat-label">pokrytí</div></div>
                 </div>
             </div>
 
@@ -278,8 +321,6 @@
         </div>
     </section>
 
-    <div class="section-divider"></div>
-
     <!-- HOW IT WORKS -->
     <section class="section">
         <div class="section-inner">
@@ -303,6 +344,86 @@
                     <div class="card-title">Najdeš svůj match.</div>
                     <p class="card-text">Zobrazíme fotografy, jejichž portfolio ladí s tím, co hledáš. Stačí si vybrat a ozvat se.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FAQ SEKCE -->
+    <section class="section" id="faq">
+        <div class="section-inner">
+            <div class="section-label reveal from-left">Časté otázky</div>
+            <h2 class="section-title reveal from-left" style="transition-delay:0.1s">FAQ</h2>
+            <div class="section-line reveal"></div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal from-bottom" style="transition-delay:0.05s">
+                    <button class="faq-q" aria-expanded="false">
+                        Je MOMENTly zdarma?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Pro klienty hledající fotografa je MOMENTly zcela zdarma. Fotografové mají přístup k základním funkcím zdarma, prémiové funkce budou dostupné v placených plánech.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal from-bottom" style="transition-delay:0.12s">
+                    <button class="faq-q" aria-expanded="false">
+                        Jak přesně funguje AI párování?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Nahrajete fotografii, která vám vizuálně sedí. Náš algoritmus analyzuje teplotu barev, práci se světlem, kontrast a celkovou náladu snímku. Výsledkem je seznam fotografů, jejichž styl se nejvíce shoduje s vaší inspirací.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal from-bottom" style="transition-delay:0.19s">
+                    <button class="faq-q" aria-expanded="false">
+                        Pro která města MOMENTly funguje?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>MOMENTly pokrývá celou Českou republiku a Slovensko. Fotografové z Prahy, Brna, Ostravy, Bratislavy i menších měst jsou vítáni. Čím více fotografů se přidá, tím přesnější výsledky pro klienty.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal from-bottom" style="transition-delay:0.26s">
+                    <button class="faq-q" aria-expanded="false">
+                        Kdy bude appka dostupná ke stažení?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Aplikace je aktuálně ve vývoji. Zanechte nám svůj e-mail níže a jako první se dozvíte o spuštění. Plánujeme launch v App Store i Google Play.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal from-bottom" style="transition-delay:0.33s">
+                    <button class="faq-q" aria-expanded="false">
+                        Jak se přihlásím jako fotograf?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Registrace pro fotografy bude otevřena se spuštěním aplikace. Zanechte nám e-mail a dáme vám vědět jako prvním. Raní fotografové získají prémiový přístup zdarma na 3 měsíce.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="newsletter-inner reveal from-bottom">
+            <div class="newsletter-text">
+                <div class="section-label">Buď první</div>
+                <h2 class="newsletter-title">Appka brzy spouští.</h2>
+                <p class="newsletter-sub">Zanech nám e-mail a jako první se dozvíš o spuštění. Žádný spam, jen ten jeden důležitý e-mail.</p>
+            </div>
+            <div class="newsletter-form">
+                <div class="email-input-wrap">
+                    <input type="email" id="emailInput" placeholder="tvuj@email.cz" autocomplete="email">
+                    <button id="submitEmail">Chci vědět první</button>
+                </div>
+                <div class="newsletter-success" id="newsletterSuccess">✓ Super! Dáme ti vědět.</div>
+                <p class="newsletter-note">Registrací souhlasíš se zpracováním e-mailu za účelem zasílání informací o spuštění.</p>
             </div>
         </div>
     </section>
@@ -359,6 +480,96 @@
             b.style.transform = `translateY(${sy * speed}px)`;
         });
     });
+    </script>
+
+    <script>
+    // COUNTER ANIMATION
+    function animateCounter(el) {
+        var target = parseInt(el.dataset.count) || 0;
+        var suffix = el.dataset.suffix || '';
+        var prefix = el.dataset.prefix || '';
+        if (!target) return; // skip non-numeric like CZ&SK
+        var start = 0;
+        var duration = 1800;
+        var startTime = null;
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            var current = Math.floor(ease * target);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = prefix + target + suffix;
+        }
+        requestAnimationFrame(step);
+    }
+    var counterObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting && !e.target.dataset.counted) {
+                e.target.dataset.counted = '1';
+                animateCounter(e.target);
+            }
+        });
+    }, {threshold: 0.5});
+    document.querySelectorAll('.stat-num[data-count]').forEach(function(el) {
+        counterObs.observe(el);
+    });
+
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var isOpen = this.getAttribute('aria-expanded') === 'true';
+            // Close all
+            document.querySelectorAll('.faq-q').forEach(function(b) {
+                b.setAttribute('aria-expanded', 'false');
+                b.nextElementSibling.classList.remove('open');
+            });
+            // Open clicked if it was closed
+            if (!isOpen) {
+                this.setAttribute('aria-expanded', 'true');
+                this.nextElementSibling.classList.add('open');
+            }
+        });
+    });
+
+    // NEWSLETTER
+    document.getElementById('submitEmail').addEventListener('click', function() {
+        var email = document.getElementById('emailInput').value;
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!re.test(email)) {
+            document.getElementById('emailInput').style.borderColor = '#e07a5f';
+            return;
+        }
+        document.getElementById('emailInput').style.borderColor = '';
+        document.getElementById('newsletterSuccess').style.display = 'block';
+        document.getElementById('emailInput').value = '';
+        document.getElementById('submitEmail').textContent = '✓ Hotovo!';
+        document.getElementById('submitEmail').style.background = '#6B9E78';
+    });
+    document.getElementById('emailInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') document.getElementById('submitEmail').click();
+    });
+    </script>
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Používáme cookies pro analýzu návštěvnosti a zlepšení webu. <a href="kontakt.html">Více info</a></p>
+        <div class="cookie-btns">
+            <button class="cookie-decline" id="cookieDecline">Odmítnout</button>
+            <button class="cookie-accept" id="cookieAccept">Přijmout</button>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var banner = document.getElementById('cookieBanner');
+        if (!banner) return;
+        if (localStorage.getItem('cookieConsent')) { banner.classList.add('hidden'); return; }
+        function dismiss(val) {
+            localStorage.setItem('cookieConsent', val);
+            banner.classList.add('hidden');
+        }
+        document.getElementById('cookieAccept').addEventListener('click', function() { dismiss('accepted'); });
+        document.getElementById('cookieDecline').addEventListener('click', function() { dismiss('declined'); });
+    })();
     </script>
 </body>
 </html>

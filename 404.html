@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stránka nenalezena | MOMENTly</title>
+    <link rel="icon" type="image/png" href="moment-logo.png">
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; --text-mid: #6B6056; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+
+        body::before { content: ''; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 110vw; height: 100vh; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.12; pointer-events: none; animation: brushBg 7s ease-in-out infinite; }
+        @keyframes brushBg { 0%,100%{opacity:0.12;transform:translate(-50%,-50%) scale(1);}50%{opacity:0.18;transform:translate(-50%,-50%) scale(1.02);} }
+
+        .blob { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+        .blob-1 { width: 500px; height: 500px; background: var(--teracotta); top: -150px; right: -100px; }
+        .blob-2 { width: 350px; height: 350px; background: #C4957A; bottom: -100px; left: -80px; }
+
+        .container { position: relative; z-index: 10; text-align: center; padding: 40px 20px; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+        .err-num { font-size: clamp(8rem, 20vw, 14rem); font-weight: 600; line-height: 1; letter-spacing: -8px; color: transparent; -webkit-text-stroke: 2px rgba(166,115,91,0.25); margin-bottom: 0; }
+        .err-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: -2px; margin: -20px 0 20px; }
+        .err-title em { font-style: italic; color: var(--teracotta); }
+        .err-sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-mid); font-weight: 300; line-height: 1.65; margin-bottom: 50px; max-width: 400px; margin-left: auto; margin-right: auto; }
+
+        .err-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--teracotta); color: white; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 12px 28px rgba(166,115,91,0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 35px rgba(166,115,91,0.4); }
+        .btn-ghost { border: 1.5px solid rgba(166,115,91,0.3); color: var(--teracotta); text-decoration: none; padding: 14px 28px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
+        .btn-ghost:hover { background: rgba(166,115,91,0.06); }
+
+        .logo { position: fixed; top: 30px; left: 40px; z-index: 100; }
+        .logo img { height: 60px; width: auto; }
+    </style>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly"></a>
+
+    <div class="container">
+        <div class="err-num">404</div>
+        <h1 class="err-title">Stránka <em>nenalezena.</em></h1>
+        <p class="err-sub">Tato stránka neexistuje nebo byla přesunuta. Ale správný fotograf se přece najde vždy.</p>
+        <div class="err-links">
+            <a href="index.html" class="btn-primary">← Zpět domů</a>
+            <a href="blog.html" class="btn-ghost">Přečíst blog</a>
+        </div>
+    </div>
+</body>
+</html>

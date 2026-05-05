@@ -2,6 +2,8 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="moment-logo.png">
+    <link rel="apple-touch-icon" href="moment-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | MOMENTly – Inspirace, fotografie a AI</title>
     <!-- SEO META -->
@@ -173,6 +175,17 @@
         footer .footer-logo img { height: 45px; opacity: 0.7; }
         footer a { color: var(--text-mid, #6B6056); text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: var(--teracotta); }
+
+        /* COOKIE BANNER */
+        .cookie-banner { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--text-dark); color: rgba(255,255,255,0.85); font-family: 'Inter', sans-serif; font-size: 0.82rem; padding: 16px 24px; border-radius: 16px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 20px 60px rgba(0,0,0,0.25); max-width: 700px; width: calc(100% - 40px); flex-wrap: wrap; transition: opacity 0.4s, transform 0.4s; }
+        .cookie-banner.hidden { opacity: 0; transform: translateX(-50%) translateY(20px); pointer-events: none; }
+        .cookie-banner p { margin: 0; flex: 1; min-width: 200px; line-height: 1.5; }
+        .cookie-banner a { color: var(--teracotta, #A6735B); text-decoration: none; }
+        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+        .cookie-accept { background: var(--teracotta, #A6735B); color: white; border: none; padding: 9px 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .cookie-accept:hover { opacity: 0.85; }
+        .cookie-decline { background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 9px 16px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; cursor: pointer; transition: opacity 0.2s; }
+        .cookie-decline:hover { opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -330,6 +343,27 @@
             });
             requestAnimationFrame(draw);
         })();
+    })();
+    </script>
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Používáme cookies pro analýzu návštěvnosti a zlepšení webu. <a href="kontakt.html">Více info</a></p>
+        <div class="cookie-btns">
+            <button class="cookie-decline" id="cookieDecline">Odmítnout</button>
+            <button class="cookie-accept" id="cookieAccept">Přijmout</button>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var banner = document.getElementById('cookieBanner');
+        if (!banner) return;
+        if (localStorage.getItem('cookieConsent')) { banner.classList.add('hidden'); return; }
+        function dismiss(val) {
+            localStorage.setItem('cookieConsent', val);
+            banner.classList.add('hidden');
+        }
+        document.getElementById('cookieAccept').addEventListener('click', function() { dismiss('accepted'); });
+        document.getElementById('cookieDecline').addEventListener('click', function() { dismiss('declined'); });
     })();
     </script>
 </body>
