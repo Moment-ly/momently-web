@@ -73,7 +73,7 @@
 
         /* H1 — word by word reveal */
         h1 { font-size: clamp(3.5rem, 8vw, 6rem); line-height: 0.95; font-weight: 600; letter-spacing: -3px; margin-bottom: 25px; overflow: hidden; }
-        .word-wrap { overflow: hidden; display: block; }
+        .word-wrap { overflow: visible; display: block; padding-bottom: 0.15em; margin-bottom: -0.15em; }
         .word { display: inline-block; opacity: 0; transform: translateY(100%); animation: wordUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
         .word.italic { font-style: italic; color: var(--teracotta); }
         @keyframes wordUp { to { opacity: 1; transform: translateY(0); } }
