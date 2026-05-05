@@ -115,6 +115,16 @@
         .blog-card:hover { transform: translateY(-8px); box-shadow: 0 30px 50px rgba(166,115,91,0.14); }
         .blog-card h3 { color: var(--teracotta); font-size: 1.8rem; margin-top: 0; margin-bottom: 15px; }
         .blog-card p { font-family: 'Inter', sans-serif; line-height: 1.65; color: #555; font-size: 0.95rem; margin-bottom: 0; }
+
+        /* SCROLL REVEAL */
+        .reveal { opacity: 0; transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.from-left { transform: translateX(-60px); }
+        .reveal.from-right { transform: translateX(60px); }
+        .reveal.from-bottom { transform: translateY(50px); }
+        .reveal.scale-in { transform: scale(0.88); }
+        .reveal.visible { opacity: 1 !important; transform: none !important; }
+        .section-line { width: 0; height: 1px; background: var(--teracotta); opacity: 0.4; margin: 15px 0 50px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+        .section-line.visible { width: 60px; }
     </style>
 </head>
 <body>
@@ -134,45 +144,45 @@
     <div class="hero">
         <div class="blob blob-a"></div><div class="blob blob-b"></div>
         <div class="content">
-            <h1>Inspirace a styl.</h1>
-            <p class="subtitle">Ponořte se do světa vizuálního rukopisu a zjistěte, jak AI mění svět fotografie.</p>
+            <h1 class="reveal from-left">Inspirace a styl.</h1>
+            <p class="subtitle reveal from-bottom" style="transition-delay:0.15s">Ponořte se do světa vizuálního rukopisu a zjistěte, jak AI mění svět fotografie.</p>
             <a href="#" class="read-more">Číst více →</a>
         </div>
     </div>
 
         <div class="blog-grid">
 
-        <a href="blog-ai-styl.html" class="blog-card">
+        <a style="transition-delay:0.00s" href="blog-ai-styl.html" class="blog-card">
             <h3>Jak AI pozná váš styl?</h3>
             <p>Technologie za MOMENTly nehledá jen barvy. Naše algoritmy analyzují kompozici, hloubku ostrosti a způsob, jakým pracujete s kontrastem, aby našly dokonalou shodu.</p>
             <span class="read-more">Číst více →</span>
         </a>
 
-        <a href="blog-svetlo.html" class="blog-card">
+        <a style="transition-delay:0.12s" href="blog-svetlo.html" class="blog-card">
             <h3>Světlo jako podpis.</h3>
             <p>Proč je práce se stíny klíčová pro budování vizuální identity. Zjistěte, jak definovat svůj rukopis skrze přirozené i umělé světlo.</p>
             <span class="read-more">Číst více →</span>
         </a>
 
-        <a href="blog-nova-era.html" class="blog-card">
+        <a style="transition-delay:0.24s" href="blog-nova-era.html" class="blog-card">
             <h3>Nová éra vyhledávání.</h3>
             <p>Doby, kdy klienti listovali stovkami portfolií, končí. Budoucnost patří vizuální relevanci – klient nahraje inspiraci a systém najde vás.</p>
             <span class="read-more">Číst více →</span>
         </a>
 
-        <a href="blog-barvy.html" class="blog-card">
+        <a style="transition-delay:0.36s" href="blog-barvy.html" class="blog-card">
             <h3>Psychologie barev.</h3>
             <p>Jak vaše barevná paleta ovlivňuje emoce diváka a proč si vás díky určitému tónování lidé zapamatují na první pohled.</p>
             <span class="read-more">Číst více →</span>
         </a>
 
-        <a href="blog-portfolio.html" class="blog-card">
+        <a style="transition-delay:0.48s" href="blog-portfolio.html" class="blog-card">
             <h3>Portfolio, které prodává.</h3>
             <p>Tipy pro fotografy, jak vybrat těch pravých 20 snímků, které nejlépe reprezentují jejich unikátní styl pro AI algoritmy.</p>
             <span class="read-more">Číst více →</span>
         </a>
 
-        <a href="blog-pribehy.html" class="blog-card">
+        <a style="transition-delay:0.60s" href="blog-pribehy.html" class="blog-card">
             <h3>MOMENTly v praxi.</h3>
             <p>Rozhovory s prvními fotografy, kteří díky naší platformě našli klienty s přesně takovými požadavky, které je baví fotit nejvíce.</p>
             <span class="read-more">Číst více →</span>
@@ -214,6 +224,15 @@
             });
         }
     })();
+    </script>
+    <script>
+    const _robs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .section-line').forEach(el => _robs.observe(el));
+    addEventListener('scroll', () => {
+        document.querySelector('nav').classList.toggle('scrolled', scrollY > 50);
+    });
     </script>
 </body>
 </html>
