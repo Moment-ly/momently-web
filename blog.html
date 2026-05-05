@@ -16,7 +16,6 @@
         .nav-links a.active { color: var(--teracotta); border-bottom: 2px solid var(--teracotta); }
 
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 0 5%; box-sizing: border-box; text-align: center; }
-        .brush-bg { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 110%; height: 100%; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.8; z-index: 1; pointer-events: none; }
         
         .content { position: relative; z-index: 10; width: 100%; max-width: 1200px; }
         h1 { font-size: clamp(3.5rem, 9vw, 5.5rem); line-height: 1; margin: 0 0 15px 0; font-weight: 600; letter-spacing: -2px; }
@@ -93,7 +92,7 @@
         }
         @keyframes brushBg {
             0%,100% { opacity: 0.15; transform: translate(-50%,-50%) scale(1); }
-            50% { opacity: 0.2; transform: translate(-50%,-50%) scale(1.02); }
+            50% { opacity: 0.20; transform: translate(-50%,-50%) scale(1.02); }
         }
 
         /* FLOATING BLOBS - global */
@@ -124,7 +123,7 @@
     </nav>
 
     <div class="hero">
-        <div class="blob blob-a"></div><div class="blob blob-b"></div><div class="brush-bg"></div>
+        <div class="blob blob-a"></div><div class="blob blob-b"></div>
         <div class="content">
             <h1>Inspirace a styl.</h1>
             <p class="subtitle">Ponořte se do světa vizuálního rukopisu a zjistěte, jak AI mění svět fotografie.</p>
