@@ -97,7 +97,7 @@
         .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
         @media (max-width: 767px) {
             .hamburger { display: flex; }
-            .nav-links { display: none !important; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
+                        .nav-links { display: none !important; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
             .nav-links.open { display: flex !important; }
             .nav-links li { padding: 15px 0; }
             .nav-links a { font-size: 1.4rem; }
@@ -249,6 +249,7 @@
             .phone-frame { filter: none !important; }
             .blob { display: none !important; }
         }
+        body.menu-open { overflow: hidden; }
     </style>
 </head>
 <body>
@@ -386,8 +387,8 @@
 
     // HAMBURGER
     const hbtn=document.getElementById('hamburger'),hnav=document.getElementById('navLinks');
-    hbtn.addEventListener('click',()=>{ hbtn.classList.toggle('open'); hnav.classList.toggle('open'); });
-    hnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ hbtn.classList.remove('open'); hnav.classList.remove('open'); }));
+    hbtn.addEventListener('click',()=>{ hbtn.classList.toggle('open'); hnav.classList.toggle('open'); document.body.classList.toggle('menu-open'); });
+    hnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ hbtn.classList.remove('open'); hnav.classList.remove('open'); document.body.classList.remove('menu-open'); }));
 
     // SLIDESHOW
     const slides=document.querySelectorAll('.screen-slide');
