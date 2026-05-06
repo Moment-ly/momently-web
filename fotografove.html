@@ -55,7 +55,7 @@
         :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; }
         body { margin: 0; padding: 0; background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); overflow-x: hidden; }
         
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 50px 5%; position: absolute; width: 100%; box-sizing: border-box; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 5%; position: fixed; width: 100%; box-sizing: border-box; z-index: 1000; transition: all 0.4s ease; }
         .logo img { height: 100px; width: auto; }
         .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; }
@@ -249,16 +249,14 @@
 <body>
     <nav>
         <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
-        <ul class="nav-links" id="navLinks">
+        <ul class="nav-links" id="navLinks" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#F4EFEA;z-index:9999;flex-direction:column;justify-content:center;align-items:center;gap:0;margin:0;padding:0;list-style:none;">
             <li><a href="index.html">Jak to funguje</a></li>
             <li><a href="fotografove.html" class="active">Pro fotografy</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
 
     <div class="hero">
@@ -348,24 +346,6 @@
     document.querySelectorAll('.proc-item').forEach(c=>_pobs.observe(c));
     </script>
     <script>
-    (function() {
-        var hbtn = document.getElementById('hamburger');
-        var hnav = document.getElementById('navLinks');
-        if (hbtn && hnav) {
-            hbtn.addEventListener('click', function() {
-                hbtn.classList.toggle('open');
-                hnav.classList.toggle('open');
-            });
-            hnav.querySelectorAll('a').forEach(function(a) {
-                a.addEventListener('click', function() {
-                    hbtn.classList.remove('open');
-                    hnav.classList.remove('open');
-                });
-            });
-        }
-    })();
-    </script>
-    <script>
     const _robs = new IntersectionObserver(entries => {
         entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
@@ -425,6 +405,33 @@
         }
         document.getElementById('cookieAccept').addEventListener('click', function() { dismiss('accepted'); });
         document.getElementById('cookieDecline').addEventListener('click', function() { dismiss('declined'); });
+    })();
+    </script>
+
+    <script>
+    (function() {
+        var btn = document.getElementById('hamburger');
+        var menu = document.getElementById('navLinks');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function() {
+            var isOpen = menu.style.display === 'flex';
+            if (isOpen) {
+                menu.style.display = 'none';
+                btn.innerHTML = '<span></span><span></span><span></span>';
+                document.body.style.overflow = '';
+            } else {
+                menu.style.display = 'flex';
+                btn.innerHTML = '&#10005;';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        menu.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                menu.style.display = 'none';
+                btn.innerHTML = '<span></span><span></span><span></span>';
+                document.body.style.overflow = '';
+            });
+        });
     })();
     </script>
 </body>

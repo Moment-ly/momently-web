@@ -146,16 +146,14 @@
 <body>
     <nav id="mainNav">
         <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
-        <ul class="nav-links" id="navLinks">
+        <ul class="nav-links" id="navLinks" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#F4EFEA;z-index:9999;flex-direction:column;justify-content:center;align-items:center;gap:0;margin:0;padding:0;list-style:none;">
             <li><a href="index.html">Jak to funguje</a></li>
             <li><a href="fotografove.html">Pro fotografy</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="faq.html" class="active">FAQ</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
 
     <div class="page-wrap">
@@ -339,6 +337,33 @@
         function resize() { canvas.width = innerWidth; canvas.height = innerHeight; } resize(); addEventListener('resize', resize);
         var pts = Array.from({length:35}, () => ({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.8+0.3, dx:(Math.random()-.5)*.3, dy:(Math.random()-.5)*.3, a:Math.random()*.3+.06 }));
         (function draw() { ctx.clearRect(0,0,canvas.width,canvas.height); pts.forEach(p => { ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(166,115,91,'+p.a+')'; ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width)p.dx*=-1; if(p.y<0||p.y>canvas.height)p.dy*=-1; }); requestAnimationFrame(draw); })();
+    })();
+    </script>
+
+    <script>
+    (function() {
+        var btn = document.getElementById('hamburger');
+        var menu = document.getElementById('navLinks');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function() {
+            var isOpen = menu.style.display === 'flex';
+            if (isOpen) {
+                menu.style.display = 'none';
+                btn.innerHTML = '<span></span><span></span><span></span>';
+                document.body.style.overflow = '';
+            } else {
+                menu.style.display = 'flex';
+                btn.innerHTML = '&#10005;';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        menu.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                menu.style.display = 'none';
+                btn.innerHTML = '<span></span><span></span><span></span>';
+                document.body.style.overflow = '';
+            });
+        });
     })();
     </script>
 </body>
