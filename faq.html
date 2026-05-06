@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | MOMENTly – Časté otázky</title>
+    <link rel="icon" type="image/png" href="moment-logo.png">
+    <link rel="apple-touch-icon" href="moment-logo.png">
+    <meta name="description" content="Časté otázky o MOMENTly – jak funguje AI párování fotografů, je aplikace zdarma, pro která města funguje a kdy bude ke stažení.">
+    <meta name="keywords" content="MOMENTly FAQ, časté otázky fotograf aplikace, jak funguje MOMENTly, AI párování fotografů, fotograf aplikace zdarma">
+    <meta name="author" content="MOMENTly">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://momently.cz/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://momently.cz/faq.html">
+    <meta property="og:title" content="FAQ | MOMENTly – Časté otázky">
+    <meta property="og:description" content="Vše co potřebuješ vědět o MOMENTly – AI párování fotografů v ČR a SR.">
+    <meta property="og:image" content="https://momently.cz/og-image.png">
+    <meta property="og:site_name" content="MOMENTly">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Je MOMENTly zdarma?", "acceptedAnswer": {"@type": "Answer", "text": "Pro klienty hledající fotografa je MOMENTly zcela zdarma. Fotografové mají přístup k základním funkcím zdarma, prémiové funkce budou dostupné v placených plánech."}},
+        {"@type": "Question", "name": "Jak přesně funguje AI párování?", "acceptedAnswer": {"@type": "Answer", "text": "Nahrajete fotografii, která vám vizuálně sedí. Algoritmus analyzuje teplotu barev, práci se světlem, kontrast a celkovou náladu snímku. Výsledkem jsou fotografové, jejichž styl se nejvíce shoduje s vaší inspirací."}},
+        {"@type": "Question", "name": "Pro která města MOMENTly funguje?", "acceptedAnswer": {"@type": "Answer", "text": "MOMENTly pokrývá celou Českou republiku a Slovensko – Praha, Brno, Ostrava, Bratislava i menší města."}},
+        {"@type": "Question", "name": "Kdy bude appka dostupná ke stažení?", "acceptedAnswer": {"@type": "Answer", "text": "Aplikace je aktuálně ve vývoji. Zanechte nám e-mail na hlavní stránce a jako první se dozvíte o spuštění."}},
+        {"@type": "Question", "name": "Jak se přihlásím jako fotograf?", "acceptedAnswer": {"@type": "Answer", "text": "Registrace pro fotografy bude otevřena se spuštěním aplikace. Raní fotografové získají prémiový přístup zdarma na 3 měsíce."}}
+      ]
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; --text-mid: #6B6056; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); overflow-x: hidden; }
+
+        body::before { content: ''; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 110vw; height: 100vh; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.15; z-index: 0; pointer-events: none; animation: brushBg 7s ease-in-out infinite; }
+        @keyframes brushBg { 0%,100%{opacity:0.15;transform:translate(-50%,-50%) scale(1);}50%{opacity:0.2;transform:translate(-50%,-50%) scale(1.02);} }
+
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 5%; position: fixed; width: 100%; box-sizing: border-box; z-index: 1000; transition: all 0.4s ease; }
+        nav.scrolled { background: rgba(244,239,234,0.93); backdrop-filter: blur(20px); padding: 20px 5%; box-shadow: 0 4px 30px rgba(166,115,91,0.08); }
+        .logo img { height: 80px; width: auto; transition: transform 0.3s ease; }
+        .logo img:hover { transform: scale(1.05) rotate(-1deg); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500; position: relative; padding-bottom: 3px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--teracotta); transition: width 0.3s ease; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a.active { color: var(--teracotta); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; z-index: 2000; }
+        .hamburger span { display: block; width: 24px; height: 2px; background-color: var(--text-dark); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 767px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none !important; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-color); justify-content: center; align-items: center; z-index: 1500; }
+            .nav-links.open { display: flex !important; }
+            .nav-links li { padding: 15px 0; }
+            .nav-links a { font-size: 1.4rem; }
+        }
+
+        .page-wrap { max-width: 800px; margin: 0 auto; padding: 160px 5% 100px; position: relative; z-index: 1; }
+
+        .section-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--teracotta); margin-bottom: 15px; }
+        h1 { font-size: clamp(3rem, 7vw, 5rem); font-weight: 600; letter-spacing: -3px; line-height: 1; margin-bottom: 20px; }
+        .page-sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-mid); font-weight: 300; line-height: 1.65; margin-bottom: 60px; max-width: 500px; }
+        .section-line { width: 50px; height: 1px; background: var(--teracotta); opacity: 0.4; margin: 20px 0 60px; }
+
+        /* FAQ CATEGORIES */
+        .faq-category { margin-bottom: 60px; }
+        .faq-category-title { font-size: 1.2rem; font-weight: 600; font-family: 'Inter', sans-serif; color: var(--teracotta); margin-bottom: 20px; letter-spacing: 0.5px; }
+
+        .faq-list { display: flex; flex-direction: column; }
+        .faq-item { border-bottom: 1px solid rgba(166,115,91,0.12); opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .faq-item.visible { opacity: 1; transform: translateY(0); }
+        .faq-q { width: 100%; background: none; border: none; padding: 26px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--text-dark); text-align: left; gap: 20px; transition: color 0.2s; }
+        .faq-q:hover { color: var(--teracotta); }
+        .faq-icon { font-size: 1.6rem; color: var(--teracotta); flex-shrink: 0; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); font-weight: 300; font-family: 'Inter', sans-serif; }
+        .faq-q[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1); }
+        .faq-a.open { max-height: 300px; }
+        .faq-a p { font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.75; color: var(--text-mid); padding-bottom: 28px; font-weight: 300; }
+        .faq-a a { color: var(--teracotta); text-decoration: none; font-weight: 500; }
+        .faq-a a:hover { opacity: 0.8; }
+
+        /* CTA BOX */
+        .faq-cta { background: rgba(166,115,91,0.06); border: 1px solid rgba(166,115,91,0.15); border-radius: 24px; padding: 50px 40px; text-align: center; margin-top: 80px; }
+        .faq-cta h2 { font-size: 2.5rem; font-weight: 600; letter-spacing: -1.5px; margin-bottom: 12px; }
+        .faq-cta h2 em { font-style: italic; color: var(--teracotta); }
+        .faq-cta p { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-mid); margin-bottom: 30px; font-weight: 300; }
+        .faq-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--teracotta); color: white; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 12px 28px rgba(166,115,91,0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 35px rgba(166,115,91,0.4); }
+        .btn-ghost { border: 1.5px solid rgba(166,115,91,0.3); color: var(--teracotta); text-decoration: none; padding: 14px 28px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
+        .btn-ghost:hover { background: rgba(166,115,91,0.06); }
+
+        /* FOOTER */
+        footer { background: transparent; border-top: 1px solid rgba(166,115,91,0.15); color: var(--text-mid); padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', sans-serif; font-size: 0.85rem; flex-wrap: wrap; gap: 20px; position: relative; z-index: 1; }
+        footer .footer-logo img { height: 45px; opacity: 0.7; }
+        footer a { color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--teracotta); }
+
+        /* COOKIE */
+        .cookie-banner { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--text-dark); color: rgba(255,255,255,0.85); font-family: 'Inter', sans-serif; font-size: 0.82rem; padding: 16px 24px; border-radius: 16px; display: flex; align-items: center; gap: 20px; z-index: 9999; box-shadow: 0 20px 60px rgba(0,0,0,0.25); max-width: 700px; width: calc(100% - 40px); flex-wrap: wrap; transition: opacity 0.4s, transform 0.4s; }
+        .cookie-banner.hidden { opacity: 0; transform: translateX(-50%) translateY(20px); pointer-events: none; }
+        .cookie-banner p { margin: 0; flex: 1; min-width: 200px; line-height: 1.5; }
+        .cookie-banner a { color: var(--teracotta); text-decoration: none; }
+        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+        .cookie-accept { background: var(--teracotta); color: white; border: none; padding: 9px 20px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+        .cookie-decline { background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 9px 16px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.82rem; cursor: pointer; }
+
+        /* SCROLL REVEAL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <nav id="mainNav">
+        <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly logo"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Jak to funguje</a></li>
+            <li><a href="fotografove.html">Pro fotografy</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="page-wrap">
+        <div class="section-label reveal">Časté otázky</div>
+        <h1 class="reveal" style="transition-delay:0.1s">FAQ.</h1>
+        <p class="page-sub reveal" style="transition-delay:0.2s">Vše co potřebuješ vědět o MOMENTly — jak funguje, pro koho je a co chystáme.</p>
+        <div class="section-line reveal" style="transition-delay:0.25s"></div>
+
+        <!-- OBECNÉ -->
+        <div class="faq-category">
+            <div class="faq-category-title reveal">Obecné</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Co je MOMENTly?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>MOMENTly je aplikace, která propojuje klienty s fotografy pomocí AI. Místo hledání přes Google nahrajete fotku, která vás vizuálně oslovuje, a naše AI najde fotografa se stejným rukopisem — v celé ČR a SR.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Je MOMENTly zdarma?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Pro klienty hledající fotografa je MOMENTly zcela zdarma. Fotografové mají přístup k základním funkcím zdarma — prémiové funkce budou dostupné v placených plánech po spuštění aplikace.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Pro která města MOMENTly funguje?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>MOMENTly pokrývá celou Českou republiku a Slovensko. Fotografové z Prahy, Brna, Ostravy, Bratislavy i menších měst jsou vítáni. Čím více fotografů se přidá, tím přesnější výsledky pro klienty.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Kdy bude appka dostupná ke stažení?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Aplikace je aktuálně ve vývoji. Zanechte nám e-mail na <a href="index.html">hlavní stránce</a> a jako první se dozvíte o spuštění. Plánujeme launch v App Store i Google Play.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRO KLIENTY -->
+        <div class="faq-category">
+            <div class="faq-category-title reveal">Pro klienty</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Jak přesně funguje AI párování?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Nahrajete fotografii, která vám vizuálně sedí — může to být cokoli, třeba fotka z Pinterestu nebo od přátel. Náš algoritmus analyzuje teplotu barev, práci se světlem, kontrast a celkovou náladu snímku. Výsledkem je seznam fotografů, jejichž styl se nejvíce shoduje s vaší inspirací.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Jak kontaktuji fotografa přes MOMENTly?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Přímo v aplikaci — chat s fotografem, dohodnutí podmínek i digitální potvrzení zakázky. Bez přepínání mezi e-mailem a zprávami.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Co když se mi žádný doporučený fotograf nelíbí?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Zkuste nahrát jinou inspiraci — výsledky se pokaždé mohou lišit. Čím více fotografů bude v databázi, tím přesnější a pestřejší výsledky dostanete.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRO FOTOGRAFY -->
+        <div class="faq-category">
+            <div class="faq-category-title reveal">Pro fotografy</div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Jak se přihlásím jako fotograf?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Registrace pro fotografy bude otevřena se spuštěním aplikace. Zanechte nám e-mail a dáme vám vědět jako prvním. Raní fotografové získají prémiový přístup zdarma na 3 měsíce.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Jak AI analyzuje mé portfolio?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Algoritmus prochází vaše fotky a hledá opakující se vzorce — teplotu barev, práci se světlem, kontrast a celkový vizuální rukopis. Čím konzistentnější portfolio, tím přesnější jsou shody s klienty. Více se dozvíte v <a href="blog-portfolio.html">článku o portfoliu</a>.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Musím platit za přístup k zakázkám?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-a">
+                        <p>Základní přístup bude zdarma. Prémiové funkce jako zvýšená viditelnost nebo pokročilé statistiky budou v placených plánech. Raní registranti dostanou premium zdarma na 3 měsíce.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="faq-cta reveal">
+            <h2>Máš další <em>otázky?</em></h2>
+            <p>Napiš nám přímo — rádi odpovíme na cokoliv.</p>
+            <div class="faq-cta-btns">
+                <a href="kontakt.html" class="btn-primary">Napsat nám</a>
+                <a href="index.html" class="btn-ghost">Zpět na hlavní stránku</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo"><img src="moment-logo.png" alt="MOMENTly"></div>
+        <div>© 2026 MOMENTly. Všechna práva vyhrazena.</div>
+        <div><a href="kontakt.html">Kontakt</a></div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Používáme cookies pro analýzu návštěvnosti a zlepšení webu. <a href="kontakt.html">Více info</a></p>
+        <div class="cookie-btns">
+            <button class="cookie-decline" id="cookieDecline">Odmítnout</button>
+            <button class="cookie-accept" id="cookieAccept">Přijmout</button>
+        </div>
+    </div>
+
+    <script>
+    addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 50));
+
+    const hbtn = document.getElementById('hamburger'), hnav = document.getElementById('navLinks');
+    hbtn.addEventListener('click', () => { hbtn.classList.toggle('open'); hnav.classList.toggle('open'); });
+    hnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hbtn.classList.remove('open'); hnav.classList.remove('open'); }));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const isOpen = this.getAttribute('aria-expanded') === 'true';
+            document.querySelectorAll('.faq-q').forEach(b => { b.setAttribute('aria-expanded','false'); b.nextElementSibling.classList.remove('open'); });
+            if (!isOpen) { this.setAttribute('aria-expanded','true'); this.nextElementSibling.classList.add('open'); }
+        });
+    });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => { if(e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.faq-item, .reveal').forEach(el => obs.observe(el));
+
+    // Cookie
+    (function() {
+        var banner = document.getElementById('cookieBanner');
+        if (localStorage.getItem('cookieConsent')) { banner.classList.add('hidden'); return; }
+        document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('cookieConsent','accepted'); banner.classList.add('hidden'); });
+        document.getElementById('cookieDecline').addEventListener('click', () => { localStorage.setItem('cookieConsent','declined'); banner.classList.add('hidden'); });
+    })();
+
+    // Particles
+    (function() {
+        var canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+        document.body.prepend(canvas);
+        var ctx = canvas.getContext('2d');
+        function resize() { canvas.width = innerWidth; canvas.height = innerHeight; } resize(); addEventListener('resize', resize);
+        var pts = Array.from({length:35}, () => ({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.8+0.3, dx:(Math.random()-.5)*.3, dy:(Math.random()-.5)*.3, a:Math.random()*.3+.06 }));
+        (function draw() { ctx.clearRect(0,0,canvas.width,canvas.height); pts.forEach(p => { ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(166,115,91,'+p.a+')'; ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width)p.dx*=-1; if(p.y<0||p.y>canvas.height)p.dy*=-1; }); requestAnimationFrame(draw); })();
+    })();
+    </script>
+</body>
+</html>
