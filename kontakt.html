@@ -257,24 +257,62 @@
         <div><a href="kontakt.html">Kontakt</a></div>
     </footer>
     
+    
     <script>
+    // HAMBURGER MENU
     (function() {
         var btn = document.getElementById('hamburger');
         var menu = document.getElementById('navLinks');
         if (!btn || !menu) return;
-        btn.addEventListener('click', function() {
-            btn.classList.toggle('open');
-            menu.classList.toggle('open');
-            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isOpen = menu.classList.contains('open');
+            if (isOpen) {
+                menu.classList.remove('open');
+                btn.classList.remove('open');
+                document.body.style.overflow = '';
+            } else {
+                menu.classList.add('open');
+                btn.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
         });
         menu.querySelectorAll('a').forEach(function(a) {
             a.addEventListener('click', function() {
-                btn.classList.remove('open');
                 menu.classList.remove('open');
+                btn.classList.remove('open');
                 document.body.style.overflow = '';
             });
         });
     })();
+
+    // COOKIE BANNER
+    (function() {
+        var banner = document.getElementById('cookieBanner');
+        if (!banner) return;
+        if (localStorage.getItem('cookieConsent')) {
+            banner.classList.add('hidden');
+            return;
+        }
+        var accept = document.getElementById('cookieAccept');
+        var decline = document.getElementById('cookieDecline');
+        if (accept) accept.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.classList.add('hidden');
+        });
+        if (decline) decline.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            banner.classList.add('hidden');
+        });
+    })();
+
+    // NAV SCROLL
+    var mainNav = document.getElementById('mainNav') || document.querySelector('nav');
+    if (mainNav) {
+        window.addEventListener('scroll', function() {
+            mainNav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
     </script>
 </body>
 </html>
