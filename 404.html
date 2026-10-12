@@ -2,55 +2,76 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stránka nenalezena | MOMENTly</title>
     <link rel="icon" type="image/png" href="moment-logo.png">
+    <link rel="apple-touch-icon" href="moment-logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | MOMENTly – Stránka nenalezena</title>
     <meta name="robots" content="noindex">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#7C9380">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root { --teracotta: #A6735B; --bg-color: #F4EFEA; --text-dark: #2C2C2C; --text-mid: #6B6056; }
+        :root {
+            --linen: #EAE3D3; --linen-light: #F6F2E8; --linen-dark: #D8CDB6;
+            --sage: #7C9380; --sage-dark: #3D5443; --sage-mist: #D8E0D0;
+            --text: #2A2820; --text-mid: #6B6458; --text-light: #9B9488; --white: #FDFAF4;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); font-family: 'Cormorant Garamond', serif; color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        body { background-color: var(--linen-light); font-family: 'Figtree', sans-serif; color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 6%; text-align: center; overflow: hidden; position: relative; }
 
-        body::before { content: ''; position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 110vw; height: 100vh; background-image: url('stetec.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.12; pointer-events: none; animation: brushBg 7s ease-in-out infinite; }
-        @keyframes brushBg { 0%,100%{opacity:0.12;transform:translate(-50%,-50%) scale(1);}50%{opacity:0.18;transform:translate(-50%,-50%) scale(1.02);} }
+        .bg { position: fixed; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(124,147,128,0.12) 0%, transparent 65%); pointer-events: none; }
 
-        .blob { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
-        .blob-1 { width: 500px; height: 500px; background: var(--teracotta); top: -150px; right: -100px; }
-        .blob-2 { width: 350px; height: 350px; background: #C4957A; bottom: -100px; left: -80px; }
+        .logo { position: fixed; top: 32px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-text { font-family: 'Newsreader', serif; font-size: 1.35rem; font-weight: 400; color: var(--text); letter-spacing: -0.3px; }
+        .logo-text em { font-style: italic; color: var(--sage-dark); }
 
-        .container { position: relative; z-index: 10; text-align: center; padding: 40px 20px; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
-        @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        .content { position: relative; z-index: 2; }
 
-        .err-num { font-size: clamp(8rem, 20vw, 14rem); font-weight: 600; line-height: 1; letter-spacing: -8px; color: transparent; -webkit-text-stroke: 2px rgba(166,115,91,0.25); margin-bottom: 0; }
-        .err-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; letter-spacing: -2px; margin: -20px 0 20px; }
-        .err-title em { font-style: italic; color: var(--teracotta); }
-        .err-sub { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-mid); font-weight: 300; line-height: 1.65; margin-bottom: 50px; max-width: 400px; margin-left: auto; margin-right: auto; }
+        .num-404 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(8rem, 20vw, 18rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 0.9;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--linen-dark);
+            letter-spacing: -8px;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.1s;
+        }
 
-        .err-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: var(--teracotta); color: white; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 12px 28px rgba(166,115,91,0.3); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 35px rgba(166,115,91,0.4); }
-        .btn-ghost { border: 1.5px solid rgba(166,115,91,0.3); color: var(--teracotta); text-decoration: none; padding: 14px 28px; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
-        .btn-ghost:hover { background: rgba(166,115,91,0.06); }
+        h1 { font-family: 'Newsreader', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; color: var(--text); letter-spacing: -0.8px; margin-bottom: 16px; opacity: 0; animation: fadeUp 0.9s ease forwards 0.35s; }
+        h1 em { font-style: italic; color: var(--sage-dark); }
 
-        .logo { position: fixed; top: 30px; left: 40px; z-index: 100; }
-        .logo img { height: 60px; width: auto; }
+        .subtitle { font-size: 1rem; line-height: 1.7; color: var(--text-mid); font-weight: 300; max-width: 380px; margin: 0 auto 40px; opacity: 0; animation: fadeUp 0.9s ease forwards 0.5s; }
+
+        .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s ease forwards 0.65s; }
+        .btn-primary { background: var(--sage-dark); color: var(--white); text-decoration: none; padding: 13px 26px; border-radius: 10px; font-size: 0.92rem; font-weight: 500; transition: all 0.2s; box-shadow: 0 6px 20px rgba(61,84,67,0.2); }
+        .btn-primary:hover { background: #2e4234; transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: var(--text); text-decoration: none; padding: 13px 22px; border-radius: 10px; border: 1.5px solid var(--linen-dark); font-size: 0.92rem; font-weight: 400; transition: all 0.2s; }
+        .btn-secondary:hover { border-color: var(--sage); color: var(--sage-dark); background: rgba(124,147,128,0.06); }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+        @media (max-width: 480px) { .btn-row { flex-direction: column; align-items: center; } }
     </style>
 </head>
 <body>
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+<div class="bg"></div>
 
-    <a href="index.html" class="logo"><img src="moment-logo.png" alt="MOMENTly"></a>
+<a href="index.html" class="logo">
+    <img src="moment-logo.png" alt="MOMENTly logo" style="height:40px;">
+    <span class="logo-text">MOMENT<em>ly</em></span>
+</a>
 
-    <div class="container">
-        <div class="err-num">404</div>
-        <h1 class="err-title">Stránka <em>nenalezena.</em></h1>
-        <p class="err-sub">Tato stránka neexistuje nebo byla přesunuta. Ale správný fotograf se přece najde vždy.</p>
-        <div class="err-links">
-            <a href="index.html" class="btn-primary">← Zpět domů</a>
-            <a href="blog.html" class="btn-ghost">Přečíst blog</a>
-        </div>
+<div class="content">
+    <div class="num-404">404</div>
+    <h1>Stránka <em>nenalezena.</em></h1>
+    <p class="subtitle">Tato stránka neexistuje nebo byla přesunuta. Ale nic se neděje – pojďte zpět domů.</p>
+    <div class="btn-row">
+        <a href="index.html" class="btn-primary">← Zpět domů</a>
+        <a href="blog.html" class="btn-secondary">Přečíst blog</a>
     </div>
+</div>
 </body>
 </html>
