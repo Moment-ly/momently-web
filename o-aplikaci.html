@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="moment-logo.png">
+    <link rel="apple-touch-icon" href="moment-logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOMENTly | Najdi svého fotografa podle stylu | CZ & SK</title>
+    <meta name="description" content="MOMENTly propojuje klienty s fotografy pomocí AI. Nahraj fotku, která se ti líbí, a naše AI najde tvůrce se stejným rukopisem.">
+    <meta name="keywords" content="fotograf, najdi fotografa, AI fotograf, svatební fotograf, portrétní fotograf, fotograf Praha, fotograf Brno, MOMENTly">
+    <meta name="author" content="MOMENTly">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://momently.cz/o-aplikaci.html">
+    <meta name="theme-color" content="#7C9380">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://momently.cz/o-aplikaci.html">
+    <meta property="og:title" content="MOMENTly | Najdi fotografa, který vidí svět jako ty">
+    <meta property="og:description" content="Nahraj fotku, která se ti líbí. Naše AI najde fotografa se stejným vizuálním rukopisem.">
+    <meta property="og:image" content="https://momently.cz/og-image.png">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:site_name" content="MOMENTly">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MOMENTly | Najdi fotografa, který vidí svět jako ty">
+    <meta name="twitter:description" content="Nahraj fotku, která se ti líbí. Naše AI najde fotografa se stejným vizuálním rukopisem.">
+    <meta name="twitter:image" content="https://momently.cz/og-image.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MOMENTly",
+      "description": "Nahraj fotku, která se ti líbí. Naše AI najde fotografa se stejným vizuálním rukopisem.",
+      "url": "https://momently.cz/",
+      "publisher": { "@type": "Organization", "name": "MOMENTly", "url": "https://momently.cz" },
+      "inLanguage": "cs"
+    }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --linen: #EAE3D3;
+            --linen-light: #F6F2E8;
+            --linen-dark: #D8CDB6;
+            --sage: #7C9380;
+            --sage-dark: #3D5443;
+            --sage-mist: #D8E0D0;
+            --text: #2A2820;
+            --text-mid: #6B6458;
+            --text-light: #9B9488;
+            --white: #FDFAF4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--linen-light);
+            font-family: 'Figtree', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 6%;
+            position: fixed;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(246, 242, 232, 0.94);
+            backdrop-filter: blur(16px);
+            padding: 18px 6%;
+            border-bottom: 1px solid rgba(216, 205, 182, 0.6);
+        }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo img { height: 44px; width: auto; }
+        .logo-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+        .logo-text em { font-style: italic; color: var(--sage-dark); }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-mid);
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 400;
+            transition: color 0.2s;
+            letter-spacing: 0.01em;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--sage-dark); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
+        .hamburger span { display: block; width: 22px; height: 1.5px; background-color: var(--text); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 6% 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 75% 40%, rgba(124, 147, 128, 0.13) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 70%, rgba(216, 205, 182, 0.35) 0%, transparent 65%);
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .text-block { flex: 1; max-width: 560px; }
+
+        .eyebrow {
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 22px;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.15s;
+        }
+
+        h1 {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(3.2rem, 7vw, 5.5rem);
+            line-height: 1.06;
+            font-weight: 300;
+            letter-spacing: -2px;
+            color: var(--text);
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.3s;
+        }
+        h1 em {
+            font-style: italic;
+            color: var(--sage-dark);
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-mid);
+            font-weight: 300;
+            margin-bottom: 42px;
+            max-width: 440px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.5s;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.7s;
+        }
+        .btn-primary {
+            background: var(--sage-dark);
+            color: var(--white);
+            text-decoration: none;
+            padding: 14px 26px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+            box-shadow: 0 8px 24px rgba(61, 84, 67, 0.22);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(61, 84, 67, 0.3);
+            background: #2e4234;
+        }
+        .btn-primary svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+        .btn-text-group { text-align: left; line-height: 1.15; }
+        .btn-text-group span { font-size: 0.62rem; display: block; opacity: 0.72; letter-spacing: 0.5px; font-weight: 400; }
+        .btn-text-group strong { font-size: 0.98rem; font-weight: 600; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            text-decoration: none;
+            padding: 14px 22px;
+            border-radius: 10px;
+            border: 1.5px solid var(--linen-dark);
+            font-size: 0.92rem;
+            font-weight: 400;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            border-color: var(--sage);
+            color: var(--sage-dark);
+            background: rgba(124, 147, 128, 0.06);
+        }
+
+        /* MATCH METER — signature UI element */
+        .match-preview {
+            margin-top: 52px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.9s;
+        }
+        .match-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 14px;
+        }
+        .match-card {
+            background: var(--white);
+            border: 1px solid var(--linen-dark);
+            border-radius: 14px;
+            padding: 18px 20px;
+            max-width: 340px;
+            box-shadow: 0 4px 20px rgba(42, 40, 32, 0.06);
+        }
+        .match-photographer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .match-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--sage-mist);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--sage-dark);
+            font-style: italic;
+            flex-shrink: 0;
+        }
+        .match-name { font-size: 0.92rem; font-weight: 500; }
+        .match-spec { font-size: 0.75rem; color: var(--text-mid); margin-top: 1px; }
+        .match-pct {
+            margin-left: auto;
+            font-family: 'Newsreader', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--sage-dark);
+            font-weight: 300;
+        }
+        .match-bars { display: flex; flex-direction: column; gap: 8px; }
+        .bar-row { display: flex; align-items: center; gap: 10px; }
+        .bar-name { font-size: 0.7rem; color: var(--text-light); width: 72px; flex-shrink: 0; }
+        .bar-track {
+            flex: 1;
+            height: 4px;
+            background: var(--linen);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--sage);
+            border-radius: 2px;
+            width: 0;
+            transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .bar-val { font-size: 0.7rem; color: var(--text-mid); width: 24px; text-align: right; }
+
+        /* COLOR PALETTE STRIP */
+        .palette-strip { display: flex; gap: 4px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--linen); }
+        .palette-swatch { height: 6px; flex: 1; border-radius: 3px; }
+        .palette-label { font-size: 0.65rem; color: var(--text-light); margin-top: 6px; }
+
+        /* ── PHONE ── */
+        .phone-wrapper {
+            position: relative;
+            flex-shrink: 0;
+            opacity: 0;
+            animation: phoneIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+        }
+        @keyframes phoneIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .phone-container { position: relative; width: 360px; }
+        .phone-frame { position: relative; width: 360px; z-index: 5; filter: drop-shadow(0 28px 56px rgba(42,40,32,0.2)); }
+        .phone-frame img.frame-img { width: 100%; display: block; position: relative; z-index: 10; pointer-events: none; }
+        .phone-screen { position: absolute; top: 7%; left: 18.26%; width: 63.48%; height: 89%; border-radius: 9% / 4.5%; overflow: hidden; z-index: 1; background: #000; }
+        .screen-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.9s ease; object-fit: cover; object-position: center top; }
+        .screen-slide.active { opacity: 1; }
+        .slide-dots { position: absolute; bottom: -32px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+        .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sage); opacity: 0.3; transition: all 0.3s; cursor: pointer; }
+        .dot.active { opacity: 1; width: 18px; border-radius: 3px; }
+
+        /* Floating badges */
+        .badge {
+            position: absolute;
+            background: var(--white);
+            border: 1px solid var(--linen-dark);
+            border-radius: 12px;
+            padding: 10px 14px;
+            box-shadow: 0 8px 24px rgba(42,40,32,0.1);
+            font-size: 0.74rem;
+            font-weight: 500;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            z-index: 20;
+            animation: badgeFloat 5s ease-in-out infinite;
+        }
+        .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+        .badge-sub { font-size: 0.65rem; color: var(--text-light); font-weight: 400; display: block; margin-top: 1px; }
+        .badge-1 { top: 14%; right: -80px; animation-delay: 0s; }
+        .badge-2 { bottom: 24%; left: -80px; animation-delay: -2.5s; }
+        @keyframes badgeFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── SECTION BASE ── */
+        .section { padding: 120px 6%; position: relative; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            line-height: 1.08;
+            color: var(--text);
+            margin-bottom: 18px;
+        }
+        .section-title em { font-style: italic; color: var(--sage-dark); }
+        .section-rule {
+            width: 40px;
+            height: 1px;
+            background: var(--sage);
+            opacity: 0.5;
+            margin: 24px 0 60px;
+        }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transition: opacity 0.9s ease, transform 0.9s ease; }
+        .reveal.from-left { transform: translateX(-40px); }
+        .reveal.from-right { transform: translateX(40px); }
+        .reveal.from-bottom { transform: translateY(36px); }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* ── HOW SECTION ── */
+        .how-bg { background: var(--linen); }
+        .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px; }
+        .how-card { position: relative; }
+        .card-num {
+            font-family: 'Newsreader', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--linen-dark);
+            line-height: 1;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .how-card:hover .card-num { color: var(--sage); }
+        .card-title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+            margin-bottom: 12px;
+        }
+        .card-text {
+            font-size: 0.88rem;
+            line-height: 1.72;
+            color: var(--text-mid);
+            font-weight: 300;
+        }
+
+        /* ── DIVIDER ── */
+        .divider { border: none; border-top: 1px solid var(--linen-dark); margin: 0; }
+
+        /* ── NEWSLETTER ── */
+        .newsletter-section { padding: 100px 6%; background: var(--linen-light); }
+        .newsletter-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            border: 1px solid var(--linen-dark);
+            padding: 64px 60px;
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+        .newsletter-text { flex: 1; min-width: 260px; }
+        .newsletter-title {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin: 10px 0 14px;
+            line-height: 1.1;
+        }
+        .newsletter-title em { font-style: italic; color: var(--sage-dark); }
+        .newsletter-sub {
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            font-weight: 300;
+            max-width: 340px;
+        }
+        .newsletter-form { flex: 1; min-width: 280px; }
+        .input-row { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+        .input-row input {
+            flex: 1;
+            min-width: 190px;
+            padding: 13px 18px;
+            border: 1.5px solid var(--linen-dark);
+            border-radius: 10px;
+            background: var(--linen-light);
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.92rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-row input:focus { border-color: var(--sage); }
+        .input-row input::placeholder { color: var(--text-light); }
+        .input-row button {
+            background: var(--sage-dark);
+            color: var(--white);
+            border: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+        .input-row button:hover { background: #2e4234; transform: translateY(-2px); }
+        .newsletter-success {
+            color: var(--sage-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+            margin-bottom: 8px;
+        }
+        .newsletter-note { font-size: 0.7rem; color: var(--text-light); line-height: 1.5; }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--linen-dark);
+            color: var(--text-light);
+            padding: 36px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: var(--linen-light);
+        }
+        .footer-logo img { height: 36px; opacity: 0.6; }
+        footer a { color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--sage-dark); }
+
+        /* ── COOKIE BANNER ── */
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: rgba(246, 242, 232, 0.82);
+            font-size: 0.8rem;
+            padding: 14px 22px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            z-index: 9999;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+            max-width: 680px;
+            width: calc(100% - 36px);
+            flex-wrap: wrap;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+        .cookie-banner.hidden { opacity: 0; transform: translateX(-50%) translateY(16px); pointer-events: none; }
+        .cookie-banner p { margin: 0; flex: 1; min-width: 180px; line-height: 1.5; }
+        .cookie-banner a { color: var(--sage); }
+        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+        .cookie-accept {
+            background: var(--sage-dark);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .cookie-decline {
+            background: transparent;
+            color: rgba(246, 242, 232, 0.5);
+            border: 1px solid rgba(246, 242, 232, 0.2);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 900px) {
+            .hero-content { flex-direction: column; text-align: center; }
+            .text-block { max-width: 100%; }
+            .btn-row { justify-content: center; }
+            .match-preview { display: flex; flex-direction: column; align-items: center; }
+            .match-card { max-width: 100%; width: 100%; }
+            .phone-wrapper { order: -1; }
+            .badge { display: none; }
+        }
+        @media (max-width: 600px) {
+            .phone-container, .phone-frame { width: 270px; }
+            .newsletter-inner { padding: 36px 28px; gap: 36px; }
+        }
+        @media (max-width: 767px) {
+            .hamburger { display: flex !important; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--linen-light);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 9999;
+                gap: 0;
+                list-style: none;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { padding: 16px 0; }
+            .nav-links a { font-size: 1.4rem; color: var(--text); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="mainNav">
+        <a href="/" class="logo">
+            <img src="moment-logo.png" alt="MOMENTly logo">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Najít fotografa</a></li>
+        <li><a href="o-aplikaci.html" class="active">Jak to funguje</a></li>
+            <li><a href="fotografove.html">Pro fotografy</a></li>
+            <li><a href="kameramani.html">Pro kameramany</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="text-block">
+                <div class="eyebrow">AI · Fotografie · CZ &amp; SK</div>
+
+                <h1>Najdi svého<br><em>fotografa.</em></h1>
+
+                <p class="subtitle">Nahraj fotku, která se ti líbí, a naše AI najde tvůrce se stejným rukopisem. Žádné listování. Jen dokonalá shoda.</p>
+
+                <div class="btn-row">
+                    <a href="#" class="btn-primary">
+                        <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        <div class="btn-text-group"><span>Stahuj na</span><strong>App Store</strong></div>
+                    </a>
+                    <a href="#" class="btn-primary">
+                        <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.22.98.15l12.09-6.98-2.56-2.55-10.51 9.38zm16.4-10.16L16.8 12l2.78-1.6-2.97-5.14L4.9.26C4.6.09 4.27.04 3.98.09L14.59 10.7l5 3.06.99-.57v.32zM.84 1.23A1.36 1.36 0 0 0 .5 2.2v19.6c0 .35.12.66.34.89l.12.1L11.57 12v-.26L.96 1.13.84 1.23zm15.4 13.23l-3.01-3.01 3.01-3.01 3.38 1.95c.96.56.96 1.46 0 2.02l-3.38 1.05z"/></svg>
+                        <div class="btn-text-group"><span>Stahuj na</span><strong>Google Play</strong></div>
+                    </a>
+                </div>
+
+                <!-- Match Preview Card -->
+                <div class="match-preview">
+                    <div class="match-label">Shoda stylu</div>
+                    <div class="match-card">
+                        <div class="match-photographer">
+                            <div class="match-avatar">T</div>
+                            <div>
+                                <div class="match-name">Tomáš Prudík</div>
+                                <div class="match-spec">Svatby · Rodina · Praha</div>
+                            </div>
+                            <div class="match-pct">93%</div>
+                        </div>
+                        <div class="match-bars">
+                            <div class="bar-row">
+                                <span class="bar-name">Světlo</span>
+                                <div class="bar-track"><div class="bar-fill" data-w="88"></div></div>
+                                <span class="bar-val">8.8</span>
+                            </div>
+                            <div class="bar-row">
+                                <span class="bar-name">Teplota</span>
+                                <div class="bar-track"><div class="bar-fill" data-w="75"></div></div>
+                                <span class="bar-val">7.5</span>
+                            </div>
+                            <div class="bar-row">
+                                <span class="bar-name">Nálada</span>
+                                <div class="bar-track"><div class="bar-fill" data-w="92"></div></div>
+                                <span class="bar-val">9.2</span>
+                            </div>
+                            <div class="bar-row">
+                                <span class="bar-name">Kontrast</span>
+                                <div class="bar-track"><div class="bar-fill" data-w="60"></div></div>
+                                <span class="bar-val">6.0</span>
+                            </div>
+                        </div>
+                        <div class="palette-strip" id="colorPalette">
+                            <div class="palette-swatch" style="background:#D4C5B0;"></div>
+                            <div class="palette-swatch" style="background:#C2A882;"></div>
+                            <div class="palette-swatch" style="background:#8FA48C;"></div>
+                            <div class="palette-swatch" style="background:#E8DFD0;"></div>
+                            <div class="palette-swatch" style="background:#A89070;"></div>
+                        </div>
+                        <div class="palette-label">Barevná paleta portfolia</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHONE -->
+            <div class="phone-wrapper">
+                <div class="phone-container">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <img src="IMG_2122.JPG" class="screen-slide active" alt="">
+                            <img src="IMG_2127.JPG" class="screen-slide" alt="">
+                            <img src="IMG_2129.JPG" class="screen-slide" alt="">
+                            <img src="IMG_2130.JPG" class="screen-slide" alt="">
+                            <img src="IMG_2132.JPG" class="screen-slide" alt="">
+                            <img src="IMG_2137.JPG" class="screen-slide" alt="">
+                            <img src="IMG_2142.JPG" class="screen-slide" alt="">
+                        </div>
+                        <img src="mobil_ram.png" class="frame-img" alt="Phone">
+                    </div>
+                    <div class="slide-dots" id="slideDots"></div>
+                </div>
+                <div class="badge badge-1">
+                    <div class="badge-dot"></div>
+                    <div>
+                        <div>AI Match · 93%</div>
+                        <span class="badge-sub">Právě spárováno</span>
+                    </div>
+                </div>
+                <div class="badge badge-2">
+                    <div class="badge-dot" style="background:#C2A882;"></div>
+                    <div>
+                        <div>Nová zakázka</div>
+                        <span class="badge-sub">právě teď</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-bg">
+        <div class="section-inner">
+            <div class="section-eyebrow reveal from-left">Jak to funguje</div>
+            <h2 class="section-title reveal from-left" style="transition-delay:.08s">Tři kroky<br>k <em>dokonalé</em> fotce.</h2>
+            <div class="section-rule reveal" style="transition-delay:.16s"></div>
+
+            <div class="how-grid">
+                <div class="how-card reveal from-bottom" style="transition-delay:.05s">
+                    <div class="card-num">01</div>
+                    <div class="card-title">Nahraj inspiraci.</div>
+                    <p class="card-text">Vyber fotku, jejíž styl se ti líbí — může to být cokoli. Naše AI analyzuje kompozici, světlo i náladu.</p>
+                </div>
+                <div class="how-card reveal from-bottom" style="transition-delay:.18s">
+                    <div class="card-num">02</div>
+                    <div class="card-title">AI analyzuje styl.</div>
+                    <p class="card-text">Algoritmus prozkoumá teplotu barev, kontrast, hloubku ostrosti a vizuální rukopis snímku.</p>
+                </div>
+                <div class="how-card reveal from-bottom" style="transition-delay:.31s">
+                    <div class="card-num">03</div>
+                    <div class="card-title">Najdeš svůj match.</div>
+                    <p class="card-text">Zobrazíme fotografy, jejichž portfolio ladí s tím, co hledáš. Stačí si vybrat a ozvat se.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+        <div class="newsletter-inner reveal from-bottom">
+            <div class="newsletter-text">
+                <div class="section-eyebrow">Buď první</div>
+                <h2 class="newsletter-title">Appka brzy<br><em>spouští.</em></h2>
+                <p class="newsletter-sub">Zanech nám e-mail a jako první se dozvíš o spuštění. Žádný spam, jen ten jeden důležitý e-mail.</p>
+            </div>
+            <div class="newsletter-form">
+                <div class="input-row">
+                    <input type="email" id="emailInput" placeholder="tvuj@email.cz" autocomplete="email">
+                    <button id="submitEmail">Chci vědět první</button>
+                </div>
+                <div class="newsletter-success" id="newsletterSuccess">✓ Super! Dáme ti vědět.</div>
+                <p class="newsletter-note">Registrací souhlasíš se zpracováním e-mailu za účelem zasílání informací o spuštění.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo"><img src="moment-logo.png" alt="MOMENTly"></div>
+        <div>© 2026 MOMENTly. Všechna práva vyhrazena.</div>
+        <div><a href="kontakt.html">Kontakt</a></div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Používáme cookies pro analýzu návštěvnosti. <a href="kontakt.html">Více info</a></p>
+        <div class="cookie-btns">
+            <button class="cookie-decline" id="cookieDecline">Odmítnout</button>
+            <button class="cookie-accept" id="cookieAccept">Přijmout</button>
+        </div>
+    </div>
+
+    <script>
+    // NAV SCROLL
+    const mainNav = document.getElementById('mainNav');
+    addEventListener('scroll', () => mainNav.classList.toggle('scrolled', scrollY > 50));
+
+    // HAMBURGER
+    (function() {
+        const btn = document.getElementById('hamburger');
+        const menu = document.getElementById('navLinks');
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            const open = menu.classList.toggle('open');
+            btn.classList.toggle('open', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        });
+        menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            menu.classList.remove('open');
+            btn.classList.remove('open');
+            document.body.style.overflow = '';
+        }));
+    })();
+
+    // SLIDESHOW
+    const slides = document.querySelectorAll('.screen-slide');
+    const dotsEl = document.getElementById('slideDots');
+    let cur = 0;
+    slides.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => goTo(i);
+        dotsEl.appendChild(d);
+    });
+    function goTo(n) {
+        slides[cur].classList.remove('active');
+        dotsEl.children[cur].classList.remove('active');
+        cur = n;
+        slides[cur].classList.add('active');
+        dotsEl.children[cur].classList.add('active');
+    }
+    setInterval(() => goTo((cur + 1) % slides.length), 3400);
+
+    // SCROLL REVEAL
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // BAR FILL ANIMATION
+    const barObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                document.querySelectorAll('.bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.w + '%';
+                });
+                barObs.disconnect();
+            }
+        });
+    }, { threshold: 0.3 });
+    const matchCard = document.querySelector('.match-card');
+    if (matchCard) barObs.observe(matchCard);
+
+    // Trigger bars immediately if already visible
+    setTimeout(() => {
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+            bar.style.width = bar.dataset.w + '%';
+        });
+    }, 1200);
+
+    // COOKIE
+    (function() {
+        const banner = document.getElementById('cookieBanner');
+        if (localStorage.getItem('cookieConsent')) { banner.classList.add('hidden'); return; }
+        document.getElementById('cookieAccept').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.classList.add('hidden');
+        });
+        document.getElementById('cookieDecline').addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            banner.classList.add('hidden');
+        });
+    })();
+
+    // NEWSLETTER
+    function submitNewsletter() {
+        const email = document.getElementById('emailInput').value;
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const btn = document.getElementById('submitEmail');
+        const input = document.getElementById('emailInput');
+        const success = document.getElementById('newsletterSuccess');
+        if (!re.test(email)) { input.style.borderColor = '#c0392b'; input.focus(); return; }
+        input.style.borderColor = '';
+        btn.textContent = 'Odesílám...';
+        btn.disabled = true;
+        fetch('https://formspree.io/f/meengdly', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ email, _subject: 'Nový zájemce o MOMENTly' })
+        }).then(r => r.json()).then(data => {
+            if (data.ok) {
+                success.style.display = 'block';
+                input.value = '';
+                btn.textContent = '✓ Hotovo!';
+                btn.style.background = '#3D5443';
+            } else { btn.textContent = 'Zkus to znovu'; btn.disabled = false; }
+        }).catch(() => { btn.textContent = 'Chyba, zkus znovu'; btn.disabled = false; });
+    }
+    document.getElementById('submitEmail').addEventListener('click', submitNewsletter);
+    document.getElementById('emailInput').addEventListener('keydown', e => { if (e.key === 'Enter') submitNewsletter(); });
+    </script>
+</body>
+</html>
