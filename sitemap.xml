@@ -93,4 +93,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- profily:start (generuje scripts/generate-profiles.mjs) -->
+  <url>
+    <loc>https://momently.cz/profil/701fa510-d284-4a8b-ab08-0e2f817e01b0</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- profily:end -->
 </urlset>
