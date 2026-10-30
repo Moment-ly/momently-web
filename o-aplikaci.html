@@ -503,53 +503,6 @@
         footer a { color: var(--text-light); text-decoration: none; transition: color 0.2s; }
         footer a:hover { color: var(--sage-dark); }
 
-        /* ── COOKIE BANNER ── */
-        .cookie-banner {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--text);
-            color: rgba(246, 242, 232, 0.82);
-            font-size: 0.8rem;
-            padding: 14px 22px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            z-index: 9999;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.2);
-            max-width: 680px;
-            width: calc(100% - 36px);
-            flex-wrap: wrap;
-            transition: opacity 0.4s, transform 0.4s;
-        }
-        .cookie-banner.hidden { opacity: 0; transform: translateX(-50%) translateY(16px); pointer-events: none; }
-        .cookie-banner p { margin: 0; flex: 1; min-width: 180px; line-height: 1.5; }
-        .cookie-banner a { color: var(--sage); }
-        .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
-        .cookie-accept {
-            background: var(--sage-dark);
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-family: 'Figtree', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        .cookie-decline {
-            background: transparent;
-            color: rgba(246, 242, 232, 0.5);
-            border: 1px solid rgba(246, 242, 232, 0.2);
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-family: 'Figtree', sans-serif;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
         /* ── MOBILE ── */
         @media (max-width: 900px) {
             .hero-content { flex-direction: column; text-align: center; }
@@ -585,6 +538,7 @@
             .nav-links a { font-size: 1.4rem; color: var(--text); }
         }
     </style>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="f856d13e-8d20-4abc-b4cc-339a3f9d7a20" data-domains="momently.cz" data-exclude-search="true"></script>
 </head>
 <body>
 
@@ -766,15 +720,6 @@
         <div><a href="kontakt.html">Kontakt</a></div>
     </footer>
 
-    <!-- COOKIE BANNER -->
-    <div class="cookie-banner" id="cookieBanner">
-        <p>Používáme cookies pro analýzu návštěvnosti. <a href="kontakt.html">Více info</a></p>
-        <div class="cookie-btns">
-            <button class="cookie-decline" id="cookieDecline">Odmítnout</button>
-            <button class="cookie-accept" id="cookieAccept">Přijmout</button>
-        </div>
-    </div>
-
     <script>
     // NAV SCROLL
     const mainNav = document.getElementById('mainNav');
@@ -842,20 +787,6 @@
             bar.style.width = bar.dataset.w + '%';
         });
     }, 1200);
-
-    // COOKIE
-    (function() {
-        const banner = document.getElementById('cookieBanner');
-        if (localStorage.getItem('cookieConsent')) { banner.classList.add('hidden'); return; }
-        document.getElementById('cookieAccept').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
-            banner.classList.add('hidden');
-        });
-        document.getElementById('cookieDecline').addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'declined');
-            banner.classList.add('hidden');
-        });
-    })();
 
     // NEWSLETTER
     function submitNewsletter() {
